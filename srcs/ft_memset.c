@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 10:53:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/27 16:25:17 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/27 16:26:07 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/04/27 17:02:31 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if ((c & 0x80) == 0)
-		return (1);
-	return (0);
+	size_t	i;
+	char	*p;
+
+	i = 0;
+	p = (char *) s;
+	while (i < n)
+	{
+		p[i] = (char)c;
+		i++;
+	}
+	return (s);
 }
