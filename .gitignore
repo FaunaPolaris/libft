@@ -1,4 +1,4 @@
 main.c
-testers
 *.swp
 a.out
+*_main.c
