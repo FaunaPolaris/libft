@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -27,7 +26,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		subs[i] = s[start];
 		i++;
 		start++;
-		printf("%s\n", subs);
 	}
 	subs[i] = '\0';
 	return (subs);

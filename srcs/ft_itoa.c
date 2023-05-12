@@ -17,15 +17,15 @@ static char	*iterate(int n, int a, char *cnv)
 	int	temp;
 
 	temp = 0;
-	if (n < 0)
-	{
-		n *= -1;
-		cnv[0] = '-';
-	}
 	temp = n % 10;
 	if (n > 10)
 	{
 		iterate(n / 10, a - 1, cnv);
+	}
+	else
+	{
+		if (a == 1)
+			cnv[0] = '-';
 	}
 	cnv[a] = temp + 48;
 	return (cnv);
@@ -38,17 +38,20 @@ char	*ft_itoa(int n)
 	char	*cnv;
 
 	a = 0;
+	if (n < 0)
+	{
+		a++;
+		n *= -1;
+	}
 	temp = n;
 	while (temp > 0)
 	{
 		a++;
 		temp = temp / 10;
 	}
-	if (n < 0)
-		a++;
 	if (n == 0)
 		a = 1;
-	cnv = malloc(a + 1);
+	cnv = (char *)malloc(sizeof(char) * (a + 1));
 	if (cnv == 0)
 		return (NULL);
 	cnv[a] = '\0';

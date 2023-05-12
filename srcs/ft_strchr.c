@@ -19,12 +19,8 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	str = (char *)s;
-	printf("%s\n", str);
 	while (str[i] != c && str[i])
-	{
 		i++;
-		printf("character:%c\n", str[i]);
-	}
 	if (str[i] == c)
 		return (&str[i]);
 	return (0);
