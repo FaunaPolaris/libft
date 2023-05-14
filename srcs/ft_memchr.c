@@ -6,9 +6,11 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:39:34 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 07:51:21 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/14 09:01:29 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -17,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	i = 0;
 	str = (const unsigned char *)s;
-	while (i < n && s[i])
+	while (i < n)
 	{
 		if (str[i] == (unsigned char)c)
 			return ((void *)&str[i]);
