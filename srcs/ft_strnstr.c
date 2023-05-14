@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:31:02 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 04:39:23 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/14 07:49:35 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (big[i] && (i + ft_strlen(little) - 1) < len)
 	{
-		if(find_l(&big[i], little))
+		if (find_l(&big[i], little))
 			return ((char *)&big[i]);
 		i++;
 	}
