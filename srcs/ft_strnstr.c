@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:55:11 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/13 18:13:37 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/13 21:31:02 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 04:39:23 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static int	find_l(const char *big, const char *little)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
-	unsigned char	*news;
+	size_t	i;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	news = (char *)malloc(ft_strlen(d));
 	i = 0;
-	while (i < n)
+	while (little[i])
 	{
-		news[i] = s[i];
-		d[i] = news[i];
+		if (big[i] == little[i])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	if (!little)
+		return ((char *)big);
+	while (big[i] && (i + ft_strlen(little) - 1) < len)
+	{
+		if(find_l(&big[i], little))
+			return ((char *)&big[i]);
 		i++;
 	}
-	return (dest);
+	return (NULL);
 }

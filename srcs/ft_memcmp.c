@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 04:32:21 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 05:39:54 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/30 21:05:03 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/04/30 23:33:11 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	size;
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, *s1) && *s1 != '\0')
-		s1++;
-	size = ft_strlen((char *)s1);
-	while (ft_strchr(set, s1[size]) && size != 0)
-		size--;
-	return (ft_substr((char *)s1, 0, size +1));
+	i = 0;
+	p1 = s1;
+	p2 = s2;
+	while (i < n)
+	{
+		if (p1[i] == p2[i])
+			i++;
+		else
+			return (p1[i] - p2[i]);
+	}
+	return (0);
 }

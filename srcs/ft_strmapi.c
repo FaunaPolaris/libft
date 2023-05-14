@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 04:32:21 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 05:39:54 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/14 05:49:19 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 06:17:27 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
-	size_t	size;
-
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, *s1) && *s1 != '\0')
-		s1++;
-	size = ft_strlen((char *)s1);
-	while (ft_strchr(set, s1[size]) && size != 0)
-		size--;
-	return (ft_substr((char *)s1, 0, size +1));
+	int		i;
+	char	*news;
+	
+	news = ft_strdup(s);
+	i = 0;
+	while (s[i])
+	{
+		news[i] = f(i, news[i]);
+		i++;
+	}
+	return (news);
 }

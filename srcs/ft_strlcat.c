@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 04:32:21 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 05:39:54 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/13 18:29:20 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/13 20:37:36 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	size;
+	size_t	i;
+	size_t	x;
 
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, *s1) && *s1 != '\0')
-		s1++;
-	size = ft_strlen((char *)s1);
-	while (ft_strchr(set, s1[size]) && size != 0)
-		size--;
-	return (ft_substr((char *)s1, 0, size +1));
+	if (size <= ft_strlen(dst))
+		return (size + ft_strlen(src));
+	i = 0;
+	x = ft_strlen(dst);
+	while (src[i] && ft_strlen(dst) + 1 < size)
+	{
+		dst[ft_strlen(dst) + i] = src[i];
+		i++;
+		x++;
+	}
+	dst[x] = '\0';
+	return (ft_strlen(dst) + ft_strlen(src));
 }
