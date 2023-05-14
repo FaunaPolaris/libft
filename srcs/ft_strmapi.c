@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 05:49:19 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 06:17:27 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/14 10:06:19 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
 	int		i;
 	char	*news;
-	
+
 	news = ft_strdup(s);
 	i = 0;
 	while (s[i])

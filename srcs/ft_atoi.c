@@ -6,35 +6,37 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:43:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/27 15:55:53 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/14 10:48:18 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ispace(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	if (c == '\r' || c == '\v' || c == '\f')
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *nptr)
 {
 	int		i;
 	char	neg;
 	int		res;
-	char	stop;
 
 	i = 0;
 	neg = 1;
 	res = 0;
-	stop = 0;
-	while ((nptr[i] == ' ') || (nptr[i] == '+') || (nptr[i] == '-'))
-	{
+	while (ispace(nptr[i]))
 		i++;
-		if (nptr[i - 1] == '-')
-			neg = -1;
-	}
-	while (ft_isdigit(nptr[i++]))
-	{
-		res = res * 10 + nptr[i - 1] - 48;
-		stop++;
-		if (stop > 19)
-			return (-1);
-	}
+	if (*(nptr + i) == '-')
+		neg = -1;
+	if (*(nptr + i) == '-' || *(nptr + i) == '+')
+		i++;
+	while (*(nptr + i) && *(nptr + i) >= '0' && *(nptr + i) <= '9')
+		res = res * 10 + (*(nptr + i++) - '0');
 	return (res * neg);
 }
