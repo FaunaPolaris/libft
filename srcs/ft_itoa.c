@@ -5,56 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 12:23:08 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/11 17:52:46 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/14 13:16:35 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 14:19:26 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*iterate(int n, int a, char *cnv)
+int	neg(int n)
 {
-	int	temp;
+	if (n < 0)
+		return (-n);
+	return (n);
+}
 
-	temp = 0;
-	temp = n % 10;
-	if (n > 10)
-	{
-		iterate(n / 10, a - 1, cnv);
-	}
-	else
-	{
-		if (a == 1)
-			cnv[0] = '-';
-	}
-	cnv[a] = temp + 48;
-	return (cnv);
+void	recurse(int n, int len, char *news)
+{
+	news[len] = neg(n % 10) + 48;
+	if (n > 9 || n < -9)
+		recurse(n / 10, len - 1, news);
 }
 
 char	*ft_itoa(int n)
 {
+	int		len;
 	int		temp;
-	int		a;
-	char	*cnv;
+	char	*news;
 
-	a = 0;
-	if (n < 0)
-	{
-		a++;
-		n *= -1;
-	}
 	temp = n;
-	while (temp > 0)
+	len = 1;
+	while (temp >= 10 || temp <= -10)
 	{
-		a++;
-		temp = temp / 10;
+		temp /= 10;
+		len++;
 	}
-	if (n == 0)
-		a = 1;
-	cnv = (char *)malloc(sizeof(char) * (a + 1));
-	if (cnv == 0)
+	if (n < 0)
+		len++;
+	news = (char *)malloc(sizeof(char) * (len + 1));
+	if (!news)
 		return (NULL);
-	cnv[a] = '\0';
-	cnv = iterate(n, a - 1, cnv);
-	return (cnv);
+	if (n < 0)
+		news[0] = '-';
+	recurse(n, len - 1, news);
+	news[len] = '\0';
+	return (news);
 }
