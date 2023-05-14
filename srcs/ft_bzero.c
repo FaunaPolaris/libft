@@ -6,13 +6,14 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:03:00 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/27 17:05:20 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/14 06:40:24 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
+	return ;
 }
