@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:20:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/12 19:55:03 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:37:08 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 char	*ft_strdup(const char *s)
 {
-	int		i;
+	size_t	len;
 	char	*news;
 
-	i = -1;
-	news = NULL;
-	news = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	len = ft_strlen((char *)s);
+	news = (char *)malloc(sizeof(char) * (len + 1));
 	if (!news)
 		return (NULL);
-	while (s[++i])
-		news[i] = s[i];
-	news[++i] = '\0';
+	ft_memcpy(news, s, len);
+	news[len] = '\0';
 	return (news);
 }

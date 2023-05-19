@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:41:01 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/12 19:22:39 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:13:22 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ static char	**ft_count(char const *s, char c, int i)
 	}
 	if (s[0] != c && s[0])
 		alloc++;
-	subs = (char **)malloc(sizeof(char *) * alloc);
+	subs = (char **)ft_calloc(alloc, sizeof(char *));
 	if (!subs)
 		return (NULL);
-	subs[alloc - 1] = 0;
 	return (subs);
 }
 
@@ -49,6 +48,8 @@ char	**ft_split(char const *s, char c)
 	int		str_count;
 	char	**subs;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	str_count = 0;
 	subs = ft_count(s, c, 0);
@@ -60,7 +61,7 @@ char	**ft_split(char const *s, char c)
 		{
 			subs[str_count] = ft_substr(s, i, ft_strchr_len(&s[i], c));
 			str_count++;
-			while (s[i] != c)
+			while (s[i] != c && s[i])
 				i++;
 		}
 	}

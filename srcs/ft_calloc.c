@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:42:43 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 13:27:38 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:22:14 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ret;
+	int		over;
 
-	if (size == 0 || (size > SIZE_MAX / nmemb))
+	over = nmemb * size;
+	if ((!nmemb || !size) || (over != 0 && over / size != nmemb))
 		return (NULL);
-	ret = malloc(nmemb * size);
+	ret = (void *)malloc(nmemb * size);
 	if (ret == 0)
 		return (NULL);
-	ft_memset(ret, nmemb, 0);
+	ft_memset(ret, 0, (nmemb * size));
 	return (ret);
 }

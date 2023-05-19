@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:12:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 12:14:53 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:09:17 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		newstr[counter] = s1[counter];
 		counter++;
 	}
-	while (counter <= t_len)
+	while (counter < t_len)
 	{
 		newstr[counter] = s2[i];
 		counter++;
