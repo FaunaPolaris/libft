@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:12:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/09 16:25:40 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:14:53 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	counter = 0;
-	t_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	t_len = ft_strlen(s1) + ft_strlen(s2);
 	newstr = malloc(t_len + 1);
-	if (newstr == 0)
-		return (NULL);
-	while (counter <= (int)ft_strlen(s1))
+	if (!s1 && !s2)
+		return (newstr);
+	while (counter <= (int)ft_strlen(s1) - 1)
 	{
 		newstr[counter] = s1[counter];
 		counter++;

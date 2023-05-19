@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:58:06 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/09 12:55:05 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:34:25 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		i;
 	char	*subs;
 
+	if (start >= ft_strlen(s))
+		return (NULL);
 	i = 0;
 	subs = malloc(len + 1);
 	if (subs == 0)

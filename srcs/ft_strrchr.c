@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:01:33 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 12:51:47 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:37:43 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	end;
+	size_t		end;
+	unsigned char	target;
 
+	target = (unsigned char)c;
+	if (target == '\0')
+		return ((char *)&s[ft_strlen(s)]);
 	end = ft_strlen(s);
 	while (end > 0)
 	{
-		if (s[end - 1] == c)
+		if (s[end - 1] == target)
 			return ((char *)&s[end - 1]);
 		end--;
 	}
