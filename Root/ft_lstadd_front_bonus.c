@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 16:03:41 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/27 16:15:29 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/14 08:16:33 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/20 17:25:20 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (n == -2147483648)
+	if (!*lst)
+		*lst = new;
+	else
 	{
-		write(1, "-2147483648\n", 12);
-		return ;
+		new->next = *lst;
+		*lst = new;
 	}
-	if (n < 0)
-	{
-		n *= -1;
-		ft_putchar('-');
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	if (n <= 9)
-		ft_putchar(n + 48);
 }

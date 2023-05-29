@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:01:33 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 12:37:43 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:14:51 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t		end;
+	size_t			end;
 	unsigned char	target;
 
 	target = (unsigned char)c;

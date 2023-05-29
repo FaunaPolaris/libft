@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 09:03:07 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/26 11:30:36 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/14 08:27:09 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/20 18:14:27 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	int		i;
+	t_list	*head;
 
+	head = lst;
 	i = 0;
-	while (str[i])
+	while (head)
 	{
-		ft_putchar(str[i]);
 		i++;
+		head = head->next;
 	}
+	return (i);
 }

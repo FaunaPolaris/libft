@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 17:05:41 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 07:56:04 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/20 17:28:04 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/20 20:55:27 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	t_list	*current;
+	t_list	*next;
 
-	d = dest;
-	s = src;
-	i = 0;
-	if (!ft_strchr(src, c))
-		return (NULL);
-	while (i < n)
+	current = *lst;
+	while (current)
 	{
-		d[i] = s[i];
-		if (s[i] == (unsigned char) c)
-			return (&d[i + 1]);
+		next = current->next;
+		ft_lstdelone(current, del);
+		current = next;
 	}
-	return (NULL);
+	*lst = NULL;
 }

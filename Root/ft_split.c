@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:41:01 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 18:13:22 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:18:43 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	**ft_count(char const *s, char c, int i)
 	char	**subs;
 	int		alloc;
 
+	if (!s)
+		return (NULL);
 	alloc = 1;
 	while (s[i])
 	{
@@ -48,11 +50,11 @@ char	**ft_split(char const *s, char c)
 	int		str_count;
 	char	**subs;
 
-	if (!s)
-		return (NULL);
 	i = 0;
 	str_count = 0;
 	subs = ft_count(s, c, 0);
+	if (!s || !subs)
+		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == c)
@@ -60,6 +62,8 @@ char	**ft_split(char const *s, char c)
 		else
 		{
 			subs[str_count] = ft_substr(s, i, ft_strchr_len(&s[i], c));
+			if (!subs)
+				return (NULL);
 			str_count++;
 			while (s[i] != c && s[i])
 				i++;
