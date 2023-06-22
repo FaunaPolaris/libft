@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 17:31:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/20 17:35:15 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/05/20 20:45:03 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*temp;
+	t_list	*tempo;
 
 	if (!lst)
 		return ;
-	temp = lst;
+	tempo = lst;
 	lst = lst->next;
-	del(temp->content);
-	free(temp);
+	del(tempo->content);
+	free(tempo);
 }
