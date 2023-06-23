@@ -6,7 +6,7 @@
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 09:43:44 by fpolaris          #+#    #+#              #
-#    Updated: 2023/06/22 15:26:28 by fpolaris         ###   ########.fr        #
+#    Updated: 2023/06/23 18:06:17 by fpolaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,28 +29,28 @@ SRC_MANDATORY	+=	mandatory/ft_striteri.c mandatory/ft_strmapi.c mandatory/ft_str
 SRCS_BONUS	=	bonus/ft_lstadd_back_bonus.c bonus/ft_lstlast_bonus.c bonus/ft_lstadd_front_bonus.c 
 SRCS_BONUS	+=	bonus/ft_lstmap_bonus.c bonus/ft_lstclear_bonus.c bonus/ft_lstnew_bonus.c bonus/ft_lstdelone_bonus.c bonus/ft_lstsize_bonus.c bonus/ft_lstiter_bonus.c
 
-SRC_DATA	=	data/grid/fp_alloc_grid.c data/grid/fp_fill_grid.c
+SRCS_DATA	=	data/grid/fp_alloc_grid.c data/grid/fp_fill_grid.c
+
+SRCS_PRINT	=	print/fp_putstr_and_len.c
 
 AR		=	ar rcs
 RM		=	rm -rf
-OBJS_MANDATORY	=	$(SRCS_MANDATORY:.c=.o)
-OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
-OBJS_DATA	=	$(SRCS_DATA:.c=.o)
+
+OBJS_DIR	=	objs
+OBJS_MANDATORY	=	$(addprefix $(OBJ_DIR)/,$(SRCS_MANDATORY:.c=.o))
+OBJS_BONUS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_BONUS:.c=.o))
+OBJS_DATA	=	$(addprefix $(OBJS_DIR)/,$(SRCS_DATA:.c=.o))
+OBJS_PRINT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_PRINT:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJS_MANDATORY)
-	@$(AR) $(NAME) $(OBJS_MANDATORY)
+$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT)
+	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT)
 
-$(OBJS_MANDATORY): $(SRCS_MANDATORY)
-	@$(CC) $(CFLAGS) -c $(SRCS_MANDATORY) -I header
+$(OBJS_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@ -Iheader
 
-$(OBJS_BONUS): $(SRCS_BONUS)
-	@$(CC) $(CFLAGS) -c $(SRCS_BONUS) -I header
-
-$(OBJS_DATA): $(SRCS_DATA)
-	@$(CC) $(CFLAGS) -c $(SRC_DATA) -I header
-	
 bonus: $(OBJS_BONUS)
 	@$(AR) $(NAME) $(OBJS_BONUS)
 
@@ -60,7 +60,7 @@ data: $(OBJS_DATA)
 full: all bonus data
 
 clean:
-	@$(RM) $(OBJS) $(OBJS_BONUS) $(OBJS_DATA) ft*.o fp*.o
+	@$(RM) $(OBJS_DIR)
 
 fclean: clean
 	@$(RM) $(NAME) $(OBJS_BONUS) $(OBJS_DATA)
