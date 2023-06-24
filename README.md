@@ -8,8 +8,8 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 	- makefile definetely working with all functions. 
 	- added functions:  
   - print/  
-	 	- fp_putnbr_base;  
- 		- fp_putnbr_and_len;  
+   - fp_putnbr_base;  
+   - fp_putnbr_and_len;  
 - 1.0.3 - unstable:  
 	- added functions:  
 		- print/  
