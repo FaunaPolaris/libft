@@ -7,11 +7,13 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 - 1.0.4 - stable:  
 	- makefile definetely working with all functions. 
 	- added functions:  
-		- fp_putnbr_base;  
-		- fp_putnbr_and_len;   
+  - print/
+	 	- fp_putnbr_base;  
+ 		- fp_putnbr_and_len;   
 - 1.0.3 - unstable:  
 	- added functions:  
-		- print/fp_putstr_and_len
+		- print/  
+   - fp_putstr_and_len
 	- Makefile working(i guess?);
 	- Planning on another file structure;    
 - 1.0.2 - unstable:  
