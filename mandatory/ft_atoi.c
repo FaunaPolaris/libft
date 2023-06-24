@@ -6,13 +6,13 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:43:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 10:48:18 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:19:54 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ispace(char c)
+static int	ispace(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
