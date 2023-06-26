@@ -4,6 +4,10 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.0.5 - stable:  
+	- added functions:  
+		- fp_itoa_base;  
+		- fp_putpointer;  
 - 1.0.4 - stable:  
 	- makefile definetely working with all functions. 
 	- added functions:  

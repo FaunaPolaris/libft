@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/23 20:27:59 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:32:22 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	fp_putnbr_base(int nb, char *base_chars);
 int		ft_printf(const char *, ...);
 int		fp_putstr_and_len(char *s, int fd);
 int		fp_putnbr_and_len(int n, int fd);
+int		fp_putpointer(const void *ptr);
+int		fp_putnbr_un(unsigned int nb);
+
 /* bonus linked list */
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -66,6 +69,7 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strmapi(char const *s, char (*f) (unsigned int, char));
 char	*ft_strnew(size_t size);
 char	*ft_strtrim(char const *s, char const *set);
+char	*fp_strndup(const char *s, int size);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);

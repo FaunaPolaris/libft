@@ -6,7 +6,7 @@
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 09:43:44 by fpolaris          #+#    #+#              #
-#    Updated: 2023/06/23 20:31:31 by fpolaris         ###   ########.fr        #
+#    Updated: 2023/06/26 17:47:31 by fpolaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ SRCS_BONUS	+=	bonus/ft_lstmap_bonus.c bonus/ft_lstclear_bonus.c bonus/ft_lstnew_
 
 SRCS_DATA	=	data/grid/fp_alloc_grid.c data/grid/fp_fill_grid.c
 
-SRCS_PRINT	=	print/fp_putstr_and_len.c print/fp_putnbr_base.c print/fp_putnbr_and_len.c
+SRCS_PRINT	=	print/fp_putstr_and_len.c print/fp_putnbr_base.c print/fp_putnbr_and_len.c print/fp_putpointer.c
+SRCS_PRINT	+=	print/fp_putnbr_un.c
+
+SRCS_STRINGS	=	strings/fp_strndup.c
 
 AR		=	ar rcs
 RM		=	rm -rf
@@ -44,11 +47,12 @@ OBJS_MANDATORY	=	$(addprefix $(OBJS_DIR)/,$(SRCS_MANDATORY:.c=.o))
 OBJS_BONUS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_BONUS:.c=.o))
 OBJS_DATA	=	$(addprefix $(OBJS_DIR)/,$(SRCS_DATA:.c=.o))
 OBJS_PRINT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_PRINT:.c=.o))
+OBJS_STRINGS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_STRINGS:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT)
-	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT)
+$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS)
+	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS)
 	@echo "$(YELLOW)libft.a compiled$(SET_0)"
 
 $(OBJS_DIR)/%.o:%.c
