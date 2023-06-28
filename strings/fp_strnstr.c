@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   fp_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,7 +27,7 @@ static int	find_l(const char *big, const char *little)
 	return (1);
 }
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*fp_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 
@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return (NULL);
 	if (little[i] == '\0')
 		return ((char *)big);
-	while (big[i] && (i + ft_strlen(little) - 1) < len)
+	while (big[i] && (i + fp_strlen(little) - 1) < len)
 	{
 		if (find_l(&big[i], little))
 			return ((char *)&big[i]);

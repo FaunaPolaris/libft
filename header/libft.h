@@ -86,6 +86,8 @@ int		fp_isprint(int c);
 /* grid manipulation */
 char	**fp_alloc_grid(char **grid, int size);
 void	fp_fill_grid(char **grid, int size, char content);
+int		fp_chrs_grid(char ***grid, int x, int y, char target);
+int		fp_chrd_grid(char ***grid, int x, int y, char target);
 
 /* misc */
 int	fp_plen(const void *ptr);

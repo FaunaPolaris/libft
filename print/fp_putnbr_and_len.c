@@ -15,7 +15,7 @@
 int	fp_putnbr_and_len(int n, int fd)
 {
 	char	*temp;
-	int	output;
+	int		output;
 
 	if (n == -2147483648)
 	{
@@ -25,17 +25,17 @@ int	fp_putnbr_and_len(int n, int fd)
 	if (n < 0)
 	{
 		n *= -1;
-		ft_putchar_fd('-', fd);
+		fp_putchar_fd('-', fd);
 	}
 	if (n > 9)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		fp_putnbr_fd(n / 10, fd);
+		fp_putnbr_fd(n % 10, fd);
 	}
 	if (n <= 9)
-		ft_putchar_fd(n + 48, fd);
-	temp = ft_itoa(n);
-	output = ft_strlen(temp);
+		fp_putchar_fd(n + 48, fd);
+	temp = fp_itoa(n);
+	output = fp_strlen(temp);
 	free(temp);
 	return (output);
 }

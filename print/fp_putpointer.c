@@ -21,7 +21,7 @@ int	fp_putpointer(const void *ptr)
 	long long	efigy;
 
 	output = 3;
-	ft_putstr_fd("0x", 1);
+	fp_putstr_fd("0x", 1);
 	efigy = (long long)ptr;
 	bitsize = (sizeof(void *) * 8);
 	i = bitsize - 4;
@@ -31,12 +31,12 @@ int	fp_putpointer(const void *ptr)
 	{
 		digit = (efigy >> i) & 0xf;
 		if (digit < 10)
-			ft_putchar_fd('0' + digit, 1);
+			fp_putchar_fd('0' + digit, 1);
 		else if (digit > 10)
-			ft_putchar_fd('a' + digit - 10, 1);
+			fp_putchar_fd('a' + digit - 10, 1);
 		output += 1;
 		i -= 4;
 	}
-	ft_putstr_fd("a0", 1);
+	fp_putstr_fd("a0", 1);
 	return (output);
 }

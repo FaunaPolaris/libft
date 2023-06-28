@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   fp_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char	**ft_count(char const *s, char c, int i)
+static char	**fp_count(char const *s, char c, int i)
 {
 	char	**subs;
 	int		alloc;
@@ -28,13 +28,13 @@ static char	**ft_count(char const *s, char c, int i)
 	}
 	if (s[0] != c && s[0])
 		alloc++;
-	subs = (char **)ft_calloc(alloc, sizeof(char *));
+	subs = (char **)fp_calloc(alloc, sizeof(char *));
 	if (!subs)
 		return (NULL);
 	return (subs);
 }
 
-static int	ft_strchr_len(const char *s, int c)
+static int	fp_strchr_len(const char *s, int c)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ static int	ft_strchr_len(const char *s, int c)
 	return (i);
 }
 
-char	**ft_split(char const *s, char c)
+char	**fp_split(char const *s, char c)
 {
 	int		i;
 	int		str_count;
@@ -52,7 +52,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	str_count = 0;
-	subs = ft_count(s, c, 0);
+	subs = fp_count(s, c, 0);
 	if (!s || !subs)
 		return (NULL);
 	while (s[i])
@@ -61,7 +61,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 		else
 		{
-			subs[str_count] = ft_substr(s, i, ft_strchr_len(&s[i], c));
+			subs[str_count] = fp_substr(s, i, fp_strchr_len(&s[i], c));
 			if (!subs)
 				return (NULL);
 			str_count++;

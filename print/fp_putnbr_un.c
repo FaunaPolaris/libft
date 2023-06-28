@@ -20,6 +20,6 @@ int	fp_putnbr_un(unsigned int nb)
 		fp_putnbr_un(nb % 10);
 	}
 	if (nb <= 9)
-		ft_putchar_fd(nb + 48, 1);
-	return (ft_strlen(ft_itoa(nb)) - 1);
+		fp_putchar_fd(nb + 48, 1);
+	return (fp_strlen(fp_itoa(nb)) - 1);
 }

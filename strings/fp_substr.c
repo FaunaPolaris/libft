@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   fp_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,20 +12,20 @@
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*fp_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*subs;
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (ft_strlen(s) - start >= len)
+	if (start > fp_strlen(s))
+		return (fp_strdup(""));
+	if (fp_strlen(s) - start >= len)
 		subs = (char *)malloc(sizeof(char) * (len + 1));
 	else
-		subs = (char *)malloc(sizeof(char) * ((ft_strlen(s) - start) + 1));
+		subs = (char *)malloc(sizeof(char) * ((fp_strlen(s) - start) + 1));
 	if (!subs)
 		return (NULL);
-	ft_strlcpy(subs, (s + start), (len + 1));
+	fp_strlcpy(subs, (s + start), (len + 1));
 	return (subs);
 }

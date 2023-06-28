@@ -19,7 +19,7 @@ int	fp_putstr_and_len(char *s, int fd)
 	len = 0;
 	while (s[len])
 	{
-		ft_putchar_fd(s[len], fd);
+		fp_putchar_fd(s[len], fd);
 		len++;
 	}
 	return (len);

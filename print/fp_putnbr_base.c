@@ -15,11 +15,10 @@
 int	fp_putnbr_base(unsigned int nb, char *base_chars)
 {
 	unsigned int	base_size;
-	unsigned int	output;
 
-	base_size = (unsigned int)ft_strlen(base_chars);
+	base_size = (unsigned int)fp_strlen(base_chars);
 	if ((nb / base_size) > 0)
-		output = fp_putnbr_base(nb / base_size, base_chars);
-	ft_putchar_fd(base_chars[nb % base_size], 1);
-	return (ft_strlen(fp_itoa_base(nb, base_size)));
+		fp_putnbr_base(nb / base_size, base_chars);
+	fp_putchar_fd(base_chars[nb % base_size], 1);
+	return (fp_strlen(fp_itoa_base(nb, base_size)));
 }

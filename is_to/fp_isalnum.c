@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   fp_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	fp_isalnum(int c)
 {
-	if (ft_isalpha(c))
+	if (fp_isalpha(c))
 		return (1);
-	else if (ft_isdigit(c))
+	else if (fp_isdigit(c))
 		return (1);
 	return (0);
 }

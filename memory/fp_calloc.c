@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   fp_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*fp_calloc(size_t nmemb, size_t size)
 {
 	void	*ret;
 	int		over;
@@ -23,6 +23,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ret = (void *)malloc(nmemb * size);
 	if (ret == NULL)
 		return (NULL);
-	ft_memset(ret, 0, (nmemb * size));
+	fp_memset(ret, 0, (nmemb * size));
 	return (ret);
 }
