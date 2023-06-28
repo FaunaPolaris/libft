@@ -6,7 +6,7 @@
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 09:43:44 by fpolaris          #+#    #+#              #
-#    Updated: 2023/06/26 17:47:31 by fpolaris         ###   ########.fr        #
+#    Updated: 2023/06/27 09:24:04 by fpolaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRCS_DATA	=	data/grid/fp_alloc_grid.c data/grid/fp_fill_grid.c
 SRCS_PRINT	=	print/fp_putstr_and_len.c print/fp_putnbr_base.c print/fp_putnbr_and_len.c print/fp_putpointer.c
 SRCS_PRINT	+=	print/fp_putnbr_un.c
 
-SRCS_STRINGS	=	strings/fp_strndup.c
+SRCS_STRINGS	=	strings/fp_strndup.c strings/fp_plen.c
+
+SRCS_CONVERT	=	convert/fp_itoa_base.c
 
 AR		=	ar rcs
 RM		=	rm -rf
@@ -48,11 +50,12 @@ OBJS_BONUS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_BONUS:.c=.o))
 OBJS_DATA	=	$(addprefix $(OBJS_DIR)/,$(SRCS_DATA:.c=.o))
 OBJS_PRINT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_PRINT:.c=.o))
 OBJS_STRINGS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_STRINGS:.c=.o))
+OBJS_CONVERT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_CONVERT:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS)
-	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS)
+$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS) $(OBJS_CONVERT)
+	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS) $(OBJS_CONVERT)
 	@echo "$(YELLOW)libft.a compiled$(SET_0)"
 
 $(OBJS_DIR)/%.o:%.c

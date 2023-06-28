@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:14:21 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/26 20:06:31 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/06/27 08:36:27 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*fp_itoa_base(unsigned int nb, int base)
 
 	temp = nb;
 	a = 1;
-	while (temp >= base)
+	while (temp >= (unsigned int)base)
 	{
 		temp /= base;
 		a++;

@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:03:41 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/23 20:34:09 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:53:53 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	fp_putnbr_and_len(int n, int fd)
 {
+	char	*temp;
+	int	output;
+
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
@@ -31,5 +34,8 @@ int	fp_putnbr_and_len(int n, int fd)
 	}
 	if (n <= 9)
 		ft_putchar_fd(n + 48, fd);
-	return (ft_strlen(ft_itoa(n)));
+	temp = ft_itoa(n);
+	output = ft_strlen(temp);
+	free(temp);
+	return (output);
 }

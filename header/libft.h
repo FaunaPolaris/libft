@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/26 17:32:22 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:46:10 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_list
 /* converters */
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
+char	*fp_itoa_base(unsigned int nb, int base);
 
 /* print */
 void	ft_putchar_fd(char c, int fd);
@@ -39,7 +40,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
-int	fp_putnbr_base(int nb, char *base_chars);
+int	fp_putnbr_base(unsigned int nb, char *base_chars);
 int		ft_printf(const char *, ...);
 int		fp_putstr_and_len(char *s, int fd);
 int		fp_putnbr_and_len(int n, int fd);
@@ -97,4 +98,7 @@ int		ft_isprint(int c);
 char	**fp_alloc_grid(char **grid, int size);
 void	fp_fill_grid(char **grid, int size, char content);
 
+/* misc */
+int	fp_plen(const void *ptr);
+	
 #endif
