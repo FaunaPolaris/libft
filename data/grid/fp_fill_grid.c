@@ -9,6 +9,7 @@ void	fp_fill_grid(char **grid, int size, char content)
 		j = -1;
 		while (j++ < size)
 			grid[i][j] = content;
-		grid[i][size] = '\0'
+		grid[i][size] = '\0';
+		i++;
 	}
 }

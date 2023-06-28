@@ -6,7 +6,11 @@
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 09:43:44 by fpolaris          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/06/27 09:24:04 by fpolaris         ###   ########.fr        #
+=======
+#    Updated: 2023/06/24 18:42:19 by fpolaris         ###   ########.fr        #
+>>>>>>> 1bf5a2518620fcf5c6082e3da080ee069910feb1
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +69,9 @@ $(OBJS_DIR)/%.o:%.c
 bonus: $(OBJS_BONUS)
 	@$(AR) $(NAME) $(OBJS_BONUS)
 
-data: $(OBJS_DATA)
-	@$(AR) $(NAME) $(OBJS_DATA)
+data: $(OBJS_MANDATORY) $(OBJS_DATA)
+	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_DATA)
+	@echo "$(YELLOW)libft and data functions compiled$(SET_0)"
 
 full: all bonus data
 
