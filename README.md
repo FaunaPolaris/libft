@@ -4,7 +4,7 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
-- 1.1.0  
+- 1.1.0 - unstable:  
 	- New folder structure;  
 	- Makefile not working;  
 - 1.0.5.6  
