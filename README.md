@@ -4,16 +4,16 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
-<<<<<<< HEAD
+- 1.1.0  
+	- New folder structure;  
+	- Makefile not working;  
 - 1.0.5.6  
 - 1.0.5 - stable:  
 	- added functions:  
 		- fp_itoa_base;  
 		- fp_putpointer;  
-=======
 - 1.0.5 - stable:  
 	- Fixed grid manipulation functions;  
->>>>>>> 1bf5a2518620fcf5c6082e3da080ee069910feb1
 - 1.0.4 - stable:  
 	- Makefile definetely working with all functions. 
 	- added functions:  

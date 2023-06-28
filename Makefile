@@ -5,12 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/14 09:43:44 by fpolaris          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/06/27 09:24:04 by fpolaris         ###   ########.fr        #
-=======
-#    Updated: 2023/06/24 18:42:19 by fpolaris         ###   ########.fr        #
->>>>>>> 1bf5a2518620fcf5c6082e3da080ee069910feb1
+#    Created: 2023/06/28 16:11:54 by fpolaris          #+#    #+#              #
+#    Updated: 2023/06/28 17:13:19 by fpolaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,67 +17,53 @@ CFLAGS		=	-Wall -Wextra -Werror
 YELLOW		=	\033[0;93m
 SET_0		=	\033[0m
 
-SRCS_MANDATORY	=	mandatory/ft_atoi.c mandatory/ft_bzero.c mandatory/ft_calloc.c 
-SRCS_MANDATORY	+=	mandatory/ft_memchr.c mandatory/ft_memcmp.c mandatory/ft_memcpy.c 
-SRCS_MANDATORY	+=	mandatory/ft_memmove.c mandatory/ft_memset.c mandatory/ft_strchr.c 
-SRCS_MANDATORY	+=	mandatory/ft_strdup.c mandatory/ft_strlen.c mandatory/ft_strncmp.c 
-SRCS_MANDATORY	+=	mandatory/ft_tolower.c mandatory/ft_toupper.c mandatory/ft_isalnum.c 
-SRCS_MANDATORY	+=	mandatory/ft_isalpha.c mandatory/ft_isascii.c mandatory/ft_isdigit.c 
-SRCS_MANDATORY	+=	mandatory/ft_isprint.c mandatory/ft_itoa.c mandatory/ft_putchar_fd.c 
-SRCS_MANDATORY	+=	mandatory/ft_putendl_fd.c mandatory/ft_putnbr_fd.c mandatory/ft_putstr_fd.c 
-SRCS_MANDATORY	+=	mandatory/ft_strjoin.c mandatory/ft_split.c mandatory/ft_strlcat.c 
-SRCS_MANDATORY	+=	mandatory/ft_strlcpy.c mandatory/ft_strnstr.c mandatory/ft_strrchr.c 
-SRCS_MANDATORY	+=	mandatory/ft_striteri.c mandatory/ft_strmapi.c mandatory/ft_strtrim.c mandatory/ft_substr.c
+SRC_CONVERT	=	fp_atoi.c fp_itoa.c fp_itoa_base.c
+SRC_PRINT	=	fp_putchar_fd.c fp_putendl.c fp_putnbr.c fp_putstr.c fp_putnbr_base.c
+SRC_PRINT	+=	fp_printf.c fp_putstr_and_len.c fp_putnbr_and_len.c fp_putpointer.c fp_putnbr_un.c
+SRC_STRING	=	fp_striteri.c fp_strchr.c fp_strdup.c fp_substr.c fp_strjoin.c fp_split.c fp_strnstr.c
+SRC_STRING	+=	fp_strrchr.c fp_strmapi.c fp_strnew.c fp_strtrim.c fp_strndup.c fp_strlen.c
+SRC_STRING	+=	fp_strlcat.c fp_strlcpy.c fp_strncmp.c
+SRC_MEMORY	=	fp_memmove.c fp_memcpy.c fp_memset.c fp_memchr.c fp_memcmp.c fp_bzero.c fp_calloc.c
+SRC_ISTO	=	fp_tolower.c fp_toupper.c fp_isalnum.c fp_isalpha.c fp_isascii.c fp_isdigit.c fp_isprint.c
+SRC_GRID	=	fp_alloc_grid.c fp_fill_grid.c
 
-SRCS_BONUS	=	bonus/ft_lstadd_back_bonus.c bonus/ft_lstlast_bonus.c bonus/ft_lstadd_front_bonus.c 
-SRCS_BONUS	+=	bonus/ft_lstmap_bonus.c bonus/ft_lstclear_bonus.c bonus/ft_lstnew_bonus.c bonus/ft_lstdelone_bonus.c bonus/ft_lstsize_bonus.c bonus/ft_lstiter_bonus.c
-
-SRCS_DATA	=	data/grid/fp_alloc_grid.c data/grid/fp_fill_grid.c
-
-SRCS_PRINT	=	print/fp_putstr_and_len.c print/fp_putnbr_base.c print/fp_putnbr_and_len.c print/fp_putpointer.c
-SRCS_PRINT	+=	print/fp_putnbr_un.c
-
-SRCS_STRINGS	=	strings/fp_strndup.c strings/fp_plen.c
-
-SRCS_CONVERT	=	convert/fp_itoa_base.c
+SRC_ALL		=	$(addprefix convert/, &(SRC_CONVERT))
+SRC_ALL		+=	$(addprefix print/, &(SRC_PRINT))
+SRC_ALL		+=	$(addprefix strings/, &(SRC_STRING))
+SRC_ALL		+=	$(addprefix memory/, &(MEMORY))
+SRC_ALL		+=	$(addprefix is_to/, &(SRC_ISTO))
+SRC_ALL		+=	$(addprefix data/, &(SRC_GRID))
 
 AR		=	ar rcs
 RM		=	rm -rf
 
 OBJS_DIR	=	objs
-OBJS_MANDATORY	=	$(addprefix $(OBJS_DIR)/,$(SRCS_MANDATORY:.c=.o))
-OBJS_BONUS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_BONUS:.c=.o))
-OBJS_DATA	=	$(addprefix $(OBJS_DIR)/,$(SRCS_DATA:.c=.o))
-OBJS_PRINT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_PRINT:.c=.o))
-OBJS_STRINGS	=	$(addprefix $(OBJS_DIR)/,$(SRCS_STRINGS:.c=.o))
-OBJS_CONVERT	=	$(addprefix $(OBJS_DIR)/,$(SRCS_CONVERT:.c=.o))
+OBJS_CONVERT	=	$(addprefix $(OBJS_DIR)/,$(SRC_CONVERT:.c=.o))
+OBJS_PRINT	=	$(addprefix $(OBJS_DIR)/,$(SRC_PRINT:.c=.o))
+OBJS_STRING	=	$(addprefix $(OBJS_DIR)/,$(SRC_STRING:.c=.o))
+OBJS_MEMORY	=	$(addprefix $(OBJS_DIR)/,$(SRC_MEMORY:.c=.o))
+OBJS_ISTO	=	$(addprefix $(OBJS_DIR)/,$(SRC_ISTO:.c=.o))
+OBJS_DATA	=	$(addprefix $(OBJS_DIR)/,$(SRC_DATA:.c=.o))
+
+OBJS_ALL	=	$(addprefix $(OBJS_DIR)/,$(SRC_ALL:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS) $(OBJS_CONVERT)
-	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_PRINT) $(OBJS_STRINGS) $(OBJS_CONVERT)
+$(NAME):$(OBJS_ALL)
+	@$(AR) $(NAME) $(OBJS_ALL)
 	@echo "$(YELLOW)libft.a compiled$(SET_0)"
 
 $(OBJS_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@ -Iheader
 
-bonus: $(OBJS_BONUS)
-	@$(AR) $(NAME) $(OBJS_BONUS)
-
-data: $(OBJS_MANDATORY) $(OBJS_DATA)
-	@$(AR) $(NAME) $(OBJS_MANDATORY) $(OBJS_DATA)
-	@echo "$(YELLOW)libft and data functions compiled$(SET_0)"
-
-full: all bonus data
-
 clean:
 	@$(RM) $(OBJS_DIR)
-	@echo "$(YELLOW)libft cleared$(SET_0)"
+	@echo "$(YELLOW)libft.a cleared$(SET_0)"
 
 fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean all fclean re bonus data
+.PHONY: clean all fclean re
