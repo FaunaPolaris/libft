@@ -4,6 +4,17 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.1.3   
+	- refactored:  
+		- data/  
+			- fp_fill_grid;  
+			- fp_alloc_grid to fp_square_grid;  
+	- new functions:  
+		- data/  
+			- fp_rectangle_grid;  
+			- fp_border_grid; 
+		- is_to/  
+			- fp_compare;   
 - 1.1.2 - stable:  
 	- New functions:  
 		-is_to/  

@@ -1,4 +1,4 @@
-#include "libft"
+#include "libft.h"
 
 int	fp_ishighest(int quantity, ...)
 {

@@ -84,10 +84,13 @@ int		fp_isdigit(int c);
 int		fp_isprint(int c);
 int		fp_ishighest(int quantity, ...);
 int		fp_islowest(int quantity, ...);
+int		fp_compare(int c, int quantity, ...);
 
 /* grid manipulation */
-char	**fp_alloc_grid(char **grid, int size);
-void	fp_fill_grid(char **grid, int size, char content);
+char	**fp_square_grid(char **grid, int size);
+char	**fp_rectangle_grid(char **grid, int width, int height);
+void	fp_fill_grid(char **grid, int width, int height, char content);
+void	fp_border_grid(char **grid, int width, int height, char c);
 int		fp_chrs_grid(char ***grid, int x, int y, char target);
 int		fp_chrd_grid(char ***grid, int x, int y, char target);
 

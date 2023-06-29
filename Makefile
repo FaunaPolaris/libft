@@ -25,7 +25,9 @@ SRC_STRING	+=	fp_strrchr.c fp_strmapi.c fp_strtrim.c fp_strndup.c fp_strlen.c
 SRC_STRING	+=	fp_strlcat.c fp_strlcpy.c fp_strncmp.c
 SRC_MEMORY	=	fp_memmove.c fp_memcpy.c fp_memset.c fp_memchr.c fp_memcmp.c fp_bzero.c fp_calloc.c
 SRC_ISTO	=	fp_tolower.c fp_toupper.c fp_isalnum.c fp_isalpha.c fp_isascii.c fp_isdigit.c fp_isprint.c fp_ishighest.c fp_islowest.c
-SRC_GRID	=	fp_alloc_grid.c fp_fill_grid.c fp_chrs_grid.c fp_chrd_grid.c
+SRC_ISTO	+=	fp_compare.c
+SRC_GRID	=	fp_square_grid.c fp_rectangle_grid.c fp_fill_grid.c fp_chrs_grid.c fp_chrd_grid.c
+SRC_GRID	+=	fp_border_grid.c
 
 SRC_ALL		=	$(addprefix convert/,$(SRC_CONVERT))
 SRC_ALL		+=	$(addprefix print/,$(SRC_PRINT))

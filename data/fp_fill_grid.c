@@ -1,15 +1,15 @@
-void	fp_fill_grid(char **grid, int size, char content)
+void	fp_fill_grid(char **grid, int width, int height, char content)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < height)
 	{
 		j = -1;
-		while (j++ < size)
+		while (j++ < width)
 			grid[i][j] = content;
-		grid[i][size] = '\0';
+		grid[i][width] = '\0';
 		i++;
 	}
 }

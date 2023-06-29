@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char	**fp_alloc_grid(char **grid, int size)
+char	**fp_square_grid(char **grid, int size)
 {
 	int	i;
 

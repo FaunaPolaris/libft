@@ -2,16 +2,16 @@
 
 int	fp_chrs_grid(char ***grid, int x, int y, char target)
 {
-	int	live_cells;
+	int	output;
 
-	live_cells = 0;
+	output = 0;
 	if (grid[0][y - 1][x] == target)
-		live_cells++;
+		output++;
 	if (grid[0][y][x - 1] == target)
-		live_cells++;
+		output++;
 	if (grid[0][y + 1][x] == target)
-		live_cells++;
+		output++;
 	if (grid[0][y][x + 1] == target)
-		live_cells++;
-	return (live_cells);
+		output++;
+	return (output);
 }
