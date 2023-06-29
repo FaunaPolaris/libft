@@ -17,7 +17,7 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 			- fp_compare;   
 - 1.1.2 - stable:  
 	- New functions:  
-		-is_to/  
+		- is_to/  
 			- fp_ishighest;  
 			- fp_islowest;   
 - 1.1.1 - stable:  
