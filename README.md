@@ -4,6 +4,11 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.1.2 - stable:  
+	- New functions:  
+		-is_to/  
+			- fp_ishigher; 
+			- fp_islowest;   
 - 1.1.1 - stable:  
 	- New folder structure working;  
 	- New functions:  

@@ -82,6 +82,8 @@ int		fp_isalpha(int c);
 int		fp_isascii(int c);
 int		fp_isdigit(int c);
 int		fp_isprint(int c);
+int		fp_ishighest(int quantity, ...);
+int		fp_islowest(int quantity, ...);
 
 /* grid manipulation */
 char	**fp_alloc_grid(char **grid, int size);
