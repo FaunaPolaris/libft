@@ -7,7 +7,7 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 - 1.1.2 - stable:  
 	- New functions:  
 		-is_to/  
-			- fp_ishigher; 
+			- fp_ishighest;  
 			- fp_islowest;   
 - 1.1.1 - stable:  
 	- New folder structure working;  
