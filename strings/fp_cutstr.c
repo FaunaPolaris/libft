@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   fp_cutstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 20:01:31 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/07/10 15:11:19 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/24 14:35:49 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/21 11:09:43 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	number_len(int nb, int output, int base)
+char	*fp_cutstr(char const *s, unsigned int start, size_t len)
 {
-	while ((nb / base) > 0)
-	{
-		nb /= base;
-		output++;
-	}
-	return (output);
-}
+	size_t	end;
+	size_t	count;
+	char	*output;
 
-int	fp_putnbr_base(unsigned int nb, int base, int up)
-{
-	if ((nb / base) > 0)
-		fp_putnbr_base(nb / base, base, up);
-	nb %= base;
-	if (nb < 10)
-		fp_putchar_fd('0' + nb, 1);
-	if (nb > 10 && up == 0)
-		fp_putchar_fd('a' + nb - 10, 1);
-	if (nb > 10 && up == 1)
-		fp_putchar_fd('A' + nb - 10, 1);
-	return (number_len(nb, 0, base));
+	end = 0;
+	count = 0;
+	while (s[end] != '\0')
+		end++;
+	if (start >= end)
+		start = end;
+	if (len > end - start)
+		len = end - start;
+	output = (char *)malloc(sizeof(char) * (len + 1));
+	if (!output)
+		return (NULL);
+	while (count < len)
+	{
+		output[count] = s[start + count];
+		count++;
+	}
+	output[count] = '\0';
+	free((void *)s);
+	return (output);
 }

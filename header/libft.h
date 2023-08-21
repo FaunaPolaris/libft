@@ -6,12 +6,16 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/28 16:15:49 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/21 11:41:47 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 /* includes */
 
@@ -35,12 +39,12 @@ char	*fp_itoa(int n);
 char	*fp_itoa_base(unsigned int nb, int base);
 
 /* print */
-void	fp_putchar_fd(char c, int fd);
+int		fp_putchar_fd(char c, int fd);
 void	fp_putendl_fd(char *s, int fd);
 void	fp_putnbr_fd(int n, int fd);
 void	fp_putstr_fd(char *s, int fd);
 
-int	fp_putnbr_base(unsigned int nb, char *base_chars);
+int	fp_putnbr_base(unsigned int nb, int base, int up);
 int		fp_printf(const char *, ...);
 int		fp_putstr_and_len(char *s, int fd);
 int		fp_putnbr_and_len(int n, int fd);
@@ -60,6 +64,8 @@ char	*fp_strmapi(char const *s, char (*f) (unsigned int, char));
 char	*fp_strnew(size_t size);
 char	*fp_strtrim(char const *s, char const *set);
 char	*fp_strndup(const char *s, int size);
+char	*get_next_line(int fd);
+char	*fp_cutstr(char const *s, unsigned int start, size_t len);
 size_t	fp_strlen(const char *s);
 size_t	fp_strlcat(char *dst, const char *src, size_t size);
 size_t	fp_strlcpy(char *dest, const char *src, size_t size);
@@ -94,6 +100,15 @@ void	fp_border_grid(char **grid, int width, int height, char c);
 int		fp_chrs_grid(char ***grid, int x, int y, char target);
 int		fp_chrd_grid(char ***grid, int x, int y, char target);
 
+/* printf */
+int		fp_printf(const char *line, ...);
+int		fp_precision(char *flags, va_list args);
+int		fp_fill_left(char *flags, va_list args, char fill);
+int		fp_fill_right(char *flags, va_list args, char fill);
+int		fp_printf_error(char *line);
+int		fp_convert(char c, va_list args);
+size_t	fp_find_len(char *line);
+int		fp_printf_find(char *line, char **buffer, int *memory);
 /* misc */
 int	fp_plen(const void *ptr);
 	
