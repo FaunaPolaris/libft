@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:35:52 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 11:23:56 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:35:57 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*read_to_line(int fd, char *memory)
 			return (NULL);
 		}
 		buffer[bytes] = '\0';
-		memory = fp_strjoin(memory, buffer);
+		memory = fp_strjoin(memory, buffer, 1);
 	}
 	free(buffer);
 	return (memory);

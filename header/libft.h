@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 11:41:47 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:29:53 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000000000
 # endif
 
 /* includes */
@@ -22,6 +22,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 /* structs */
 
@@ -56,7 +57,7 @@ void	fp_striteri(char *s, void (*f) (unsigned int, char *));
 char	*fp_strchr(const char *s, int c);
 char	*fp_strdup(const char *s);
 char	*fp_substr(char const *s, unsigned int start, size_t len);
-char	*fp_strjoin(char const *s1, char const *s2);
+char	*fp_strjoin(char const *s1, char const *s2, int free);
 char	**fp_split(char const *s, char c);
 char	*fp_strnstr(const char *big, const char *little, size_t len);
 char	*fp_strrchr(const char *s, int c);
