@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static char	*read_to_line(int fd, char *memory);
-static char	*fp_findl(char *memory);
-static char	*fp_findnextl(char *memory);
+static char	*st_readtol(int fd, char *memory);
+static char	*st_findl(char *memory);
+static char	*st_findnextl(char *memory);
 
 char	*get_next_line(int fd)
 {
@@ -25,32 +25,30 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!memory)
 	{
-		memory = (char *)malloc(sizeof(char) * 1);
+		memory = (char *)fp_calloc(1, sizeof(char));
 		if (!memory)
 			return (NULL);
-		memory[0] = '\0';
 	}
-	memory = read_to_line(fd, memory);
-	line = fp_findl(memory);
+	memory = st_readtol(fd, memory);
+	line = st_findl(memory);
 	if (!line)
 	{
 		free(memory);
 		memory = NULL;
 		return (NULL);
 	}
-	memory = fp_findnextl(memory);
+	memory = st_findnextl(memory);
 	return (line);
 }
 
-static char	*read_to_line(int fd, char *memory)
+static char	*st_readtol(int fd, char *memory)
 {
 	char	*buffer;
 	int		bytes;
 
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *)fp_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
-	buffer[0] = '\0';
 	while (fp_strchr(buffer, '\n') == NULL)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
@@ -62,43 +60,37 @@ static char	*read_to_line(int fd, char *memory)
 			free(memory);
 			return (NULL);
 		}
-		buffer[bytes] = '\0';
 		memory = fp_strjoin(memory, buffer, 1);
 	}
 	free(buffer);
 	return (memory);
 }
 
-static char	*fp_findl(char *memory)
+static char	*st_findl(char *memory)
 {
 	int		i;
-	int		count;
+	int		j;
 	int		check;
 	char	*line;
 
-	i = -1;
-	count = -1;
+	i = 0;
+	j = -1;
 	check = 0;
 	if (!memory || memory[0] == '\0')
 		return (NULL);
-	while (memory[++count] != '\0')
-	{
-		if (memory[count] == '\n')
-			{
-				check += 1;
-				break ;
-			}
-	}
-	line = (char *)malloc(sizeof(char) * (count + check + 1));
+	while (memory[i] != '\n' && memory[i])
+		i++;
+	if (fp_strchr(memory, '\n'))
+		check++;
+	line = (char *)fp_calloc(i + check + 1, sizeof(char));
 	if (!line)
 		return (NULL);
-	while (++i < (count + check))
-		line[i] = memory[i];
-	line[i] = '\0';
+	while (++j < (i + check))
+		line[j] = memory[j];
 	return (line);
 }
 
-static char	*fp_findnextl(char *memory)
+static char	*st_findnextl(char *memory)
 {
 	int	size;
 	int	start;

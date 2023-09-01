@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000000000
+#  define BUFFER_SIZE 1000
 # endif
 
 /* includes */
@@ -71,6 +71,7 @@ size_t	fp_strlen(const char *s);
 size_t	fp_strlcat(char *dst, const char *src, size_t size);
 size_t	fp_strlcpy(char *dest, const char *src, size_t size);
 int		fp_strncmp(const char *s1, const char *s2, size_t n);
+void		fp_strcuto(char *str, int x);
 
 /* memory manipulation */
 void	*fp_memcpy(void *dest, const void *src, size_t n);
@@ -100,6 +101,8 @@ void	fp_fill_grid(char **grid, int width, int height, char content);
 void	fp_border_grid(char **grid, int width, int height, char c);
 int		fp_chrs_grid(char ***grid, int x, int y, char target);
 int		fp_chrd_grid(char ***grid, int x, int y, char target);
+int		fp_griditer(char **grid, void (*fp) (char *, int));
+int		fp_gridlen(char **grid);
 
 /* printf */
 int		fp_printf(const char *line, ...);

@@ -4,6 +4,12 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.1.5  
+	- added functions:  
+		- data/  
+			- fp_griditer;  
+		- string/  
+			- fp_strcuto;  
 - 1.1.4  
 	- added functions:  
 		- fp_printf;  

@@ -92,12 +92,11 @@ int	fp_printf_find(char *line, char **buffer, int *memory)
 		if (line[memory[0]] == '%')
 		{
 			len = fp_find_len(&line[memory[0]]);
-			buffer[0] = (char *)malloc(sizeof(char) * (len + 1));
+			buffer[0] = (char *)fp_calloc(len + 1, sizeof(char));
 			if (!buffer[0])
 				return (1);
 			buffer[0] = fp_memcpy((void *)buffer[0], 
 				(void *)line, len);
-			buffer[0][len] = '\0';
 			memory[0]++;
 			return (len);
 		}

@@ -14,25 +14,19 @@
 
 int	fp_convert(char c, va_list args)
 {
-	int	i;
-
-	i = 0;
 	if (c == 'i' || c == 'd')
-		i = fp_putnbr_base(va_arg(args, int), 10, 0);
+		return (fp_putnbr_base(va_arg(args, int), 10, 0));
 	else if (c == 's')
-		i = fp_putstr_and_len(va_arg(args, char *), 1);
+		return (fp_putstr_and_len(va_arg(args, char *), 1));
 	else if (c == 'c')
-	{
-		fp_putchar_fd(va_arg(args, int), 1);
-		return (1);
-	}
+		return (fp_putchar_fd(va_arg(args, int), 1));
 	else if (c == 'x')
-		i = fp_putnbr_base(va_arg(args, unsigned int), 16, 0);
+		return (fp_putnbr_base(va_arg(args, unsigned int), 16, 0));
 	else if (c == 'X')
-		i = fp_putnbr_base(va_arg(args, unsigned int), 16, 1);
+		return (fp_putnbr_base(va_arg(args, unsigned int), 16, 1));
 	else if (c == 'u')
-		i = fp_putnbr_base(va_arg(args, unsigned int), 10, 0);
+		return (fp_putnbr_base(va_arg(args, unsigned int), 10, 0));
 	else if (c == 'p')
-		i = fp_putpointer(va_arg(args, void *));
-	return (i);
+		return (fp_putpointer(va_arg(args, void *)));
+	return (0);
 }
