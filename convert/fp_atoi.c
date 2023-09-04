@@ -27,6 +27,8 @@ int	fp_atoi(const char *nptr)
 	char	neg;
 	int		res;
 
+	if (!nptr)
+		return (0);
 	i = 0;
 	neg = 1;
 	res = 0;

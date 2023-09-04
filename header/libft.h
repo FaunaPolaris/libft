@@ -68,12 +68,14 @@ char	*fp_strnew(size_t size);
 char	*fp_strtrim(char const *s, char const *set);
 char	*fp_strndup(const char *s, int size);
 char	*get_next_line(int fd);
+char	*fp_read_all(int fd);
 char	*fp_cutstr(char const *s, unsigned int start, size_t len);
 size_t	fp_strlen(const char *s);
 size_t	fp_strlcat(char *dst, const char *src, size_t size);
 size_t	fp_strlcpy(char *dest, const char *src, size_t size);
 int		fp_strncmp(const char *s1, const char *s2, size_t n);
 void		fp_strcuto(char *str, int x);
+void		fp_strsub(char *line, int old, int sub);
 
 /* memory manipulation */
 void	*fp_memcpy(void *dest, const void *src, size_t n);
