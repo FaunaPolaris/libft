@@ -6,13 +6,13 @@
 #    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 16:11:54 by fpolaris          #+#    #+#              #
-#    Updated: 2023/08/23 14:49:00 by fpolaris         ###   ########.fr        #
+#    Updated: 2023/09/11 17:24:52 by fpolaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libft.a
 CC		=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -g3 -lm
+CFLAGS		=	-Wall -Wextra -Werror -g3
 
 YELLOW		=	\033[0;93m
 SET_0		=	\033[0m
@@ -28,7 +28,7 @@ SRC_MEMORY	=	fp_memmove.c fp_memcpy.c fp_memset.c fp_memchr.c fp_memcmp.c fp_bze
 SRC_ISTO	=	fp_tolower.c fp_toupper.c fp_isalnum.c fp_isalpha.c fp_isascii.c fp_isdigit.c fp_isprint.c fp_ishighest.c fp_islowest.c
 SRC_ISTO	+=	fp_compare.c fp_isupper.c
 SRC_GRID	=	fp_square_grid.c fp_rectangle_grid.c fp_fill_grid.c fp_chrs_grid.c fp_chrd_grid.c
-SRC_GRID	+=	fp_border_grid.c fp_griditer.c fp_gridlen.c
+SRC_GRID	+=	fp_border_grid.c fp_griditer.c fp_gridlen.c fp_free_grid.c
 SRC_MATH	=	fp_lerp.c fp_pow.c
 SRC_PRINTF	=	fp_printf.c fp_precision.c fp_padding.c fp_printf_error.c fp_convert.c
 

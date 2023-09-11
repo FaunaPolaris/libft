@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:29:53 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:25:59 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int		fp_chrs_grid(char ***grid, int x, int y, char target);
 int		fp_chrd_grid(char ***grid, int x, int y, char target);
 int		fp_griditer(char **grid, void (*fp) (char *, int));
 int		fp_gridlen(char **grid);
+void		fp_free_grid(char **grid);
 
 /* printf */
 int		fp_printf(const char *line, ...);
