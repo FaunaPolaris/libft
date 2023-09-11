@@ -118,6 +118,13 @@ int		fp_printf_error(char *line);
 int		fp_convert(char c, va_list args);
 size_t	fp_find_len(char *line);
 int		fp_printf_find(char *line, char **buffer, int *memory);
+
+/* math */
+double	fp_dlerp(int x, int y, double t);
+int	fp_ilerp(int x, int y, double t);
+float	fp_flerp(int x, int y, float t);
+double	fp_lerpcolor(int cx, int cy, double t);
+
 /* misc */
 int	fp_plen(const void *ptr);
 	

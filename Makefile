@@ -29,6 +29,7 @@ SRC_ISTO	=	fp_tolower.c fp_toupper.c fp_isalnum.c fp_isalpha.c fp_isascii.c fp_i
 SRC_ISTO	+=	fp_compare.c fp_isupper.c
 SRC_GRID	=	fp_square_grid.c fp_rectangle_grid.c fp_fill_grid.c fp_chrs_grid.c fp_chrd_grid.c
 SRC_GRID	+=	fp_border_grid.c fp_griditer.c fp_gridlen.c
+SRC_MATH	=	fp_lerp.c fp_pow.c
 SRC_PRINTF	=	fp_printf.c fp_precision.c fp_padding.c fp_printf_error.c fp_convert.c
 
 SRC_ALL		=	$(addprefix convert/,$(SRC_CONVERT))
@@ -38,6 +39,7 @@ SRC_ALL		+=	$(addprefix memory/,$(SRC_MEMORY))
 SRC_ALL		+=	$(addprefix is_to/,$(SRC_ISTO))
 SRC_ALL		+=	$(addprefix data/,$(SRC_GRID))
 SRC_ALL		+=	$(addprefix printf/,$(SRC_PRINTF))
+SRC_ALL		+=	$(addprefix math/,$(SRC_MATH))
 
 AR		=	ar rcs
 RM		=	rm -rf

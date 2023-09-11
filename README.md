@@ -4,6 +4,18 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.1.8  
+	- readded function:  
+		- data/
+			- fp_lstnewn;  
+			- fp_lstaddb;  
+			- fp_lstaddf;  
+			- fp_lstclear; 
+	- added functions: 
+		- math/
+			- fp_lerp;  
+			- fp_lerpcolor;
+			- fp_pow;
 - 1.1.7  
 	- added functions:  
 		- strings/  
