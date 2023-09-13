@@ -4,13 +4,24 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.2.0  
+	- functions:
+		- strings/  
+			- + fp_chrcnt;  
+			- + fp_strcpyto;  
+			- + fp_splitsplit;
+			- ~ fp_split;  
+		- data/  (naming overhaul)  
+			- fp_border_grid -> fp_grdfll_brdr;  
+			- fp_chrd_grid -> fp_grdsch_dgns;  
+			- fp_chrs_grid -> fp_grdsch_sids;  
+			- fp_fill_grid -> fp_grdfll;  
+			- fp_free_grid -> fp_grdfre;  
+			- fp_griditer -> fp_grditr;  
+			- fp_gridlen -> fp_gridlen;
+			- fp_rectangle_grid -> fp_grdnew;  
+			- fp_square_grid -> fp_grdnew_sqre;  
 - 1.1.8  
-	- readded function:  
-		- data/
-			- fp_lstnewn;  
-			- fp_lstaddb;  
-			- fp_lstaddf;  
-			- fp_lstclear; 
 	- added functions: 
 		- math/
 			- fp_lerp;  

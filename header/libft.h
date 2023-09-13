@@ -60,8 +60,10 @@ char	*fp_strchr(const char *s, int c);
 char	*fp_strdup(const char *s);
 char	*fp_substr(char const *s, unsigned int start, size_t len);
 char	*fp_strjoin(char const *s1, char const *s2, int free);
-char	**fp_split(char const *s, char c);
+char	**fp_split(char const *s, int c);
+char	***fp_splitsplit(char const *str, int frst, int scnd);
 char	*fp_strnstr(const char *big, const char *little, size_t len);
+char	*fp_strcpyto(char *str, int c);
 char	*fp_strrchr(const char *s, int c);
 char	*fp_strmapi(char const *s, char (*f) (unsigned int, char));
 char	*fp_strnew(size_t size);
@@ -74,7 +76,7 @@ size_t	fp_strlen(const char *s);
 size_t	fp_strlcat(char *dst, const char *src, size_t size);
 size_t	fp_strlcpy(char *dest, const char *src, size_t size);
 int		fp_strncmp(const char *s1, const char *s2, size_t n);
-void		fp_strcuto(char *str, int x);
+int		fp_chrcnt(const char *str, int c);
 void		fp_strsub(char *line, int old, int sub);
 
 /* memory manipulation */
@@ -100,15 +102,15 @@ int		fp_islowest(int quantity, ...);
 int		fp_compare(int c, int quantity, ...);
 
 /* grid manipulation */
-char	**fp_square_grid(char **grid, int size);
-char	**fp_rectangle_grid(char **grid, int width, int height);
-void	fp_fill_grid(char **grid, int width, int height, char content);
-void	fp_border_grid(char **grid, int width, int height, char c);
-int		fp_chrs_grid(char ***grid, int x, int y, char target);
-int		fp_chrd_grid(char ***grid, int x, int y, char target);
-int		fp_griditer(char **grid, void (*fp) (char *, int));
-int		fp_gridlen(char **grid);
-void		fp_free_grid(char **grid);
+int		fp_grditr(char **grid, int oprator, void (*fp) (char *, int));
+char	**fp_grdnew(int width, int height);
+char	**fp_grdnew_sqre(int size);
+int		fp_grdsch_dgns(char **grid, int y, int x, char target);
+int		fp_grdsch_sids(char **grid, int y, int x, char target);
+int		fp_grdlen(char **grid);
+void		fp_grdfll(char **grid, char fill, int width, int height);
+void		fp_grdfll_brdr(char **grid, char fill, int width, int height);
+void		fp_grdfre(char **grid);
 
 /* printf */
 int		fp_printf(const char *line, ...);
@@ -125,6 +127,7 @@ double	fp_dlerp(int x, int y, double t);
 int	fp_ilerp(int x, int y, double t);
 float	fp_flerp(int x, int y, float t);
 double	fp_lerpcolor(int cx, int cy, double t);
+int	fp_pow(int operand, int power);
 
 /* misc */
 int	fp_plen(const void *ptr);

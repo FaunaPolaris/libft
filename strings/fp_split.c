@@ -12,62 +12,26 @@
 
 #include "libft.h"
 
-static char	**fp_count(char const *s, char c, int i)
+char	**fp_split(const char *str, int c)
 {
-	char	**subs;
-	int		alloc;
+	char	**output;
+	char		*p;
+	int			grid_size;
+	int			i;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	alloc = 1;
-	while (s[i])
+	grid_size = fp_chrcnt(str, c) + 1;
+	output = (char **)fp_calloc(grid_size + 1, sizeof(char *));
+	if (!output)
+		return (NULL);
+	p = (char *)str;
+	i = -1;
+	while (++i < grid_size)
 	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1])
-			alloc++;
-		i++;
+		output[i] = fp_strcpyto(p, c);
+		p = fp_strchr(p, c);
+		p++;
 	}
-	if (s[0] != c && s[0])
-		alloc++;
-	subs = (char **)fp_calloc(alloc, sizeof(char *));
-	if (!subs)
-		return (NULL);
-	return (subs);
-}
-
-static int	fp_strchr_len(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != c && s[i])
-		i++;
-	return (i);
-}
-
-char	**fp_split(char const *s, char c)
-{
-	int		i;
-	int		str_count;
-	char	**subs;
-
-	i = 0;
-	str_count = 0;
-	subs = fp_count(s, c, 0);
-	if (!s || !subs)
-		return (NULL);
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			subs[str_count] = fp_substr(s, i, fp_strchr_len(&s[i], c));
-			if (!subs)
-				return (NULL);
-			str_count++;
-			while (s[i] != c && s[i])
-				i++;
-		}
-	}
-	return (subs);
+	return (output);
 }

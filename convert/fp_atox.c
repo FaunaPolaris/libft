@@ -16,11 +16,11 @@ unsigned int	fp_atox(char *s)
 	while (s[++i])
 	{
 		if (fp_isdigit(s[i]))
-			output += (s[i] - 48) * pow(16, power);
+			output += (s[i] - 48) * fp_pow(16, power);
 		if (fp_isupper(s[i]))
-			output += (s[i] - 55) * pow(16, power);
+			output += (s[i] - 55) * fp_pow(16, power);
 		else
-			output += (s[i] - 87) * pow(16, power);
+			output += (s[i] - 87) * fp_pow(16, power);
 		power--;
 	}
 	return (output);

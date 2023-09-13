@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	fp_free_grid(char **grid)
+void	fp_grdfre(char **grid)
 {
 	int	i;
 
