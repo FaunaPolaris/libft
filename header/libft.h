@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/11 17:25:59 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:56:40 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		fp_putnbr_un(unsigned int nb);
 /* string manipulation */
 void	fp_striteri(char *s, void (*f) (unsigned int, char *));
 char	*fp_strchr(const char *s, int c);
+char	*fp_strnxt(const char *s, int c);
 char	*fp_strdup(const char *s);
 char	*fp_substr(char const *s, unsigned int start, size_t len);
 char	*fp_strjoin(char const *s1, char const *s2, int free);
@@ -111,6 +112,7 @@ int		fp_grdlen(char **grid);
 void		fp_grdfll(char **grid, char fill, int width, int height);
 void		fp_grdfll_brdr(char **grid, char fill, int width, int height);
 void		fp_grdfre(char **grid);
+void		fp_grdfre3(char ***grid);
 
 /* printf */
 int		fp_printf(const char *line, ...);
