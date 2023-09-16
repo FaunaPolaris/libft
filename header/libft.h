@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:25:54 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/11 17:25:59 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:56:40 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,13 @@ void		fp_grdfll(char **grid, char fill, int width, int height);
 void		fp_grdfll_brdr(char **grid, char fill, int width, int height);
 void		fp_grdfre(char **grid);
 void		fp_grdfre3(char ***grid);
+<<<<<<< HEAD
 
 /* wireframe manipulation */
 t_wireframe	*fp_frmnew(int width, int height);
 void		fp_frmfre(t_wireframe *wrfrm);
+=======
+>>>>>>> refs/remotes/origin/main
 
 /* printf */
 int		fp_printf(const char *line, ...);

@@ -1,6 +1,7 @@
 #include "libft.h"
 
 static char	***st_free(char ***output, char **temp);
+static int	st_check(const char *str, int frst);
 
 char	***fp_splitsplit(const char *str, int frst, int scnd)
 {
@@ -11,7 +12,7 @@ char	***fp_splitsplit(const char *str, int frst, int scnd)
 
 	if (!str)
 		return (NULL);
-	height = fp_chrcnt(str, frst) + 1;
+	height = st_check(str, frst);
 	output = (char ***)fp_calloc(height + 1, sizeof(char**));
 	if (!output)
 		return (NULL);
@@ -26,6 +27,18 @@ char	***fp_splitsplit(const char *str, int frst, int scnd)
 			return (st_free(output, temp));
 	}
 	st_free(NULL, temp);
+	return (output);
+}
+
+static int	st_check(const char *str, int frst)
+{
+	int	output;
+
+	output = fp_chrcnt(str, frst) + 1;
+	if (str[0] == frst)
+		output--;
+	if (str[fp_strlen(str)] == frst)
+		output--;
 	return (output);
 }
 
