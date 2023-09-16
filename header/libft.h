@@ -24,18 +24,20 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <math.h>
+# include <time.h>
 
 /* structs */
 
 typedef struct	s_wireframe
 {
-	s_wireframe	*xplus;
-	s_wireframe	*xmins;
-	s_wireframe	*yplus;
-	s_wireframe	*ymins;
+	struct s_wireframe	*xplus;
+	struct s_wireframe	*xmins;
+	struct s_wireframe	*yplus;
+	struct s_wireframe	*ymins;
 	int	width;
 	int	height;
-}
+	int	color;
+}	t_wireframe;
 
 /* declarations */
 
@@ -118,13 +120,10 @@ void		fp_grdfll(char **grid, char fill, int width, int height);
 void		fp_grdfll_brdr(char **grid, char fill, int width, int height);
 void		fp_grdfre(char **grid);
 void		fp_grdfre3(char ***grid);
-<<<<<<< HEAD
 
 /* wireframe manipulation */
-t_wireframe	*fp_frmnew(int width, int height);
-void		fp_frmfre(t_wireframe *wrfrm);
-=======
->>>>>>> refs/remotes/origin/main
+t_wireframe	**fp_frmnew(int width, int height);
+void		fp_frmfre(t_wireframe **wrfrm);
 
 /* printf */
 int		fp_printf(const char *line, ...);
