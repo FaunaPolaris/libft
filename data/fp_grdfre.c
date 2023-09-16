@@ -21,3 +21,13 @@ void	fp_grdfre(char **grid)
 		free(grid[i]);
 	free(grid);
 }
+
+void	fp_grdfre3(char ***grid)
+{
+	int	i;
+
+	i = -1;
+	while (grid[++i])
+		fp_grdfre(grid[i]);
+	free(grid);
+}

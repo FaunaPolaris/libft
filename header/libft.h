@@ -27,11 +27,15 @@
 
 /* structs */
 
-typedef struct s_list
+typedef struct	s_wireframe
 {
-	void			*content;
-	struct s_list	*next;
-}			t_list;
+	s_wireframe	*xplus;
+	s_wireframe	*xmins;
+	s_wireframe	*yplus;
+	s_wireframe	*ymins;
+	int	width;
+	int	height;
+}
 
 /* declarations */
 
@@ -57,6 +61,7 @@ int		fp_putnbr_un(unsigned int nb);
 /* string manipulation */
 void	fp_striteri(char *s, void (*f) (unsigned int, char *));
 char	*fp_strchr(const char *s, int c);
+char	*fp_strnxt(const char *s, int c);
 char	*fp_strdup(const char *s);
 char	*fp_substr(char const *s, unsigned int start, size_t len);
 char	*fp_strjoin(char const *s1, char const *s2, int free);
@@ -97,6 +102,7 @@ int		fp_isascii(int c);
 int		fp_isdigit(int c);
 int		fp_isprint(int c);
 int		fp_isupper(int c);
+int		fp_isprime(int nb);
 int		fp_ishighest(int quantity, ...);
 int		fp_islowest(int quantity, ...);
 int		fp_compare(int c, int quantity, ...);
@@ -111,6 +117,11 @@ int		fp_grdlen(char **grid);
 void		fp_grdfll(char **grid, char fill, int width, int height);
 void		fp_grdfll_brdr(char **grid, char fill, int width, int height);
 void		fp_grdfre(char **grid);
+void		fp_grdfre3(char ***grid);
+
+/* wireframe manipulation */
+t_wireframe	*fp_frmnew(int width, int height);
+void		fp_frmfre(t_wireframe *wrfrm);
 
 /* printf */
 int		fp_printf(const char *line, ...);

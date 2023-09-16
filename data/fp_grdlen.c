@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int	fp_gridlen(char **grid)
+int	fp_grdlen(char **grid)
 {
 	int	i;
 
