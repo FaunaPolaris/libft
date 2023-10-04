@@ -24,7 +24,7 @@ char	**fp_split(const char *str, int c)
 	grid_size = fp_chrcnt(str, c) + 1;
 	if (str[0] == c)
 		grid_size--;
-	if (str[fp_strlen(str)] == c)
+	if (str[fp_strlen(str) - 1] == c)
 		grid_size--;
 	output = (char **)fp_calloc(grid_size + 1, sizeof(char *));
 	if (!output)
