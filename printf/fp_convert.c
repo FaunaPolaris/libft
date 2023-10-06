@@ -15,7 +15,7 @@
 int	fp_convert(char c, va_list args)
 {
 	if (c == 'i' || c == 'd')
-		return (fp_putnbr_base(va_arg(args, int), 10, 0));
+		return (fp_putnbr_fd(va_arg(args, int), 1));
 	else if (c == 's')
 		return (fp_putstr_and_len(va_arg(args, char *), 1));
 	else if (c == 'c')
