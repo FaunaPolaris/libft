@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	{
 		j = -1;
 		while (ccc[i][++j])
-			fp_printf("%15s", ccc[i][j]);
+			fp_printf("%g", 48);
 		write(1, "\n", 1);
 	}
 	st_free(ccc,cc);

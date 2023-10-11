@@ -79,6 +79,7 @@ char	*fp_strndup(const char *s, int size);
 char	*get_next_line(int fd);
 char	*fp_read_all(int fd);
 char	*fp_cutstr(char const *s, unsigned int start, size_t len);
+char	*fp_strpadding(char *str, int padding);
 size_t	fp_strlen(const char *s);
 size_t	fp_strlcat(char *dst, const char *src, size_t size);
 size_t	fp_strlcpy(char *dest, const char *src, size_t size);
