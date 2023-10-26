@@ -26,6 +26,12 @@
 # include <math.h>
 # include <time.h>
 
+# include "libfp.h"
+# include "stack.h"
+# include "llist.h"
+# include "sorting.h"
+# include "wireframe.h"
+
 /* structs */
 
 typedef struct	s_wireframe

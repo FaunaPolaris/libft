@@ -10,43 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-int	neg(int n)
+static int	neg(int nb)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }
 
-void	recurse(int n, int len, char *news)
+static void	recurse(int nb, int len, char *news)
 {
 	news[len] = neg(n % 10) + 48;
-	if (n > 9 || n < -9)
+	if (nb > 9 || nb < -9)
 		recurse(n / 10, len - 1, news);
 }
 
-char	*fp_itoa(int n)
+char	*conv_itoa(int nb)
 {
 	int		len;
 	int		temp;
 	char	*news;
 
-	temp = n;
+	temp = nb;
 	len = 1;
 	while (temp >= 10 || temp <= -10)
 	{
-		temp /= 10;
+		temp *= .1;
 		len++;
 	}
-	if (n < 0)
+	if (nb < 0)
 		len++;
-	news = (char *)malloc(sizeof(char) * (len + 1));
+	news = (char *)mem_calloc(len + 1, sizeof(char));
 	if (!news)
 		return (NULL);
-	if (n < 0)
+	if (nb < 0)
 		news[0] = '-';
-	recurse(n, len - 1, news);
-	news[len] = '\0';
+	recurse(nb, len - 1, news);
 	return (news);
 }

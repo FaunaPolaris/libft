@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-unsigned int	fp_atox(char *s)
+unsigned int	conv_atox(const char *nptr)
 {
 	int			power;
 	int			i;
@@ -24,15 +24,15 @@ unsigned int	fp_atox(char *s)
 	if (s[0] != '0' || s[1] != 'x')
 		return (output);
 	i = 1;
-	power = fp_strlen(s) - 3;
+	power = str_len(s) - 3;
 	while (s[++i])
 	{
-		if (fp_isdigit(s[i]))
-			output += (s[i] - 48) * fp_pow(16, power);
-		if (fp_isupper(s[i]))
-			output += (s[i] - 55) * fp_pow(16, power);
+		if (is_digit(s[i]))
+			output += (s[i] - 48) * bc_pow(16, power);
+		if (is_upper(s[i]))
+			output += (s[i] - 55) * bc_pow(16, power);
 		else
-			output += (s[i] - 87) * fp_pow(16, power);
+			output += (s[i] - 87) * bc_pow(16, power);
 		power--;
 	}
 	return (output);

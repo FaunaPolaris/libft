@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
 static void	recurse(unsigned int nb, int base, char **output, int a)
 {

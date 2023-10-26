@@ -1,16 +1,18 @@
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_islowest(int quantity, ...)
+int	check_lowest(int quantity, ...)
 {
 	va_list	args;
 	int	output;
 	int	i;
 	int	temp;
 
-	i = 0;
+	i = -1;
+	if (quantity < 2)
+		return (0);
 	va_start(args, quantity);
 	output = va_arg(args, int);
-	while (i < quantity)
+	while (++i < quantity)
 	{
 		temp = va_arg(args, int);
 		if (temp < output)

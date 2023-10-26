@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_isascii.c                                       :+:      :+:    :+:   */
+/*   fp_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 10:53:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/23 11:01:16 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/27 13:43:49 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/06/24 19:19:54 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	fp_isascii(int c)
+#include "polarium.h"
+
+int	conv_atoi(const char *nptr)
 {
-	if (c > 127)
+	char	neg;
+	int		i;
+	int		res;
+
+	if (!nptr)
 		return (0);
-	if ((c & 0x80) == 0)
-		return (1);
-	return (0);
+	i = 0;
+	neg = 1;
+	res = 0;
+	while (is_space(nptr[i]))
+		i++;
+	if (*(nptr + i) == '-')
+		neg = -1;
+	if (*(nptr + i) == '-' || *(nptr + i) == '+')
+		i++;
+	while (*(nptr + i) && *(nptr + i) >= '0' && *(nptr + i) <= '9')
+		res = res * 10 + (*(nptr + i++) - '0');
+	return (res * neg);
 }

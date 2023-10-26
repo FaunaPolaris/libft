@@ -4,6 +4,10 @@ First project of the 42 curriculum, where you have to create a library with 52 m
 **This project was initially made in three weeks. But it's still being iterated over.**  
 
 ### Version History
+- 1.3.0  
+    - new folder structure;  
+    - gnl refactored;  
+    - printf refactored;  
 - 1.2.1  
 	- functions:  
 		- data/  

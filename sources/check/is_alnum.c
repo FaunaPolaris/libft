@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_isalpha.c                                       :+:      :+:    :+:   */
+/*   fp_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 09:14:38 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/26 09:19:18 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/26 09:19:35 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/04/26 11:29:19 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	fp_isalpha(int c)
+#include "polarium.h"
+
+int	is_alnum(int c)
 {
-	if (c < 91 && c > 64)
+	if (is_alpha(c))
 		return (1);
-	else if (c < 123 && c > 96)
+	else if (is_digit(c))
 		return (1);
 	return (0);
 }

@@ -1,6 +1,6 @@
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_isupper(int c)
+int	is_upper(int c)
 {
 	if (c > 64 && c < 91)
 		return (1);

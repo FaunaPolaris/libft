@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_isalnum.c                                       :+:      :+:    :+:   */
+/*   fp_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 09:19:35 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/26 11:29:19 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/26 09:17:36 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/04/27 14:21:20 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_isalnum(int c)
+int	is_digit(int c)
 {
-	if (fp_isalpha(c))
-		return (1);
-	else if (fp_isdigit(c))
+	if (c < 58 && c > 47)
 		return (1);
 	return (0);
 }

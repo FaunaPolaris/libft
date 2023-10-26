@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_atoi.c                                          :+:      :+:    :+:   */
+/*   fp_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 13:43:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/24 19:19:54 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/10/19 14:49:19 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/19 14:49:20 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-static int	ispace(char c)
+long long int	fp_atoll(const char *nptr)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	if (c == '\r' || c == '\v' || c == '\f')
-		return (1);
-	return (0);
-}
-
-int	fp_atoi(const char *nptr)
-{
-	int		i;
-	char	neg;
-	int		res;
+	int					i;
+	char				neg;
+	long long int		res;
 
 	if (!nptr)
 		return (0);
 	i = 0;
 	neg = 1;
 	res = 0;
-	while (ispace(nptr[i]))
+	while (fp_ispace(nptr[i]))
 		i++;
 	if (*(nptr + i) == '-')
 		neg = -1;
