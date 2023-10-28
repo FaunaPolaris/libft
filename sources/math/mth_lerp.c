@@ -1,21 +1,21 @@
-#include "libft.h"
+#include "polarium.h"
 
-double	fp_dlerp(int x, int y, double t)
+double	mth_dlerp(int x, int y, double t)
 {
 	return ((1 - t) * x + (t * y));
 }
 
-int	fp_ilerp(int x, int y, double t)
+int	mth_ilerp(int x, int y, double t)
 {
 	return ((1 - t) * x + (t * y));
 }
 
-float	fp_flerp(int x, int y, float t)
+float	mth_flerp(int x, int y, float t)
 {
 	return ((1 - t) * x + (t * y));
 }
 
-double	fp_lerpcolor(int cx, int cy, double t)
+double	mth_lerpcolor(int cx, int cy, double t)
 {
 	int	red[3];
 	int	green[3];

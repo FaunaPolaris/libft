@@ -1,6 +1,6 @@
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_pow(int operand, int power)
+int	mth_pow(int operand, int power)
 {
 	int	i;
 
