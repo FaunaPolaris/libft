@@ -10,31 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	*fp_cutstr(char const *s, unsigned int start, size_t len)
+int	str_cut(char *str, int from, int size)
 {
-	size_t	end;
-	size_t	count;
-	char	*output;
+	size_t	len;
+	char	*efigy;
+	int		i;
 
-	end = 0;
-	count = 0;
-	while (s[end] != '\0')
-		end++;
-	if (start >= end)
-		start = end;
-	if (len > end - start)
-		len = end - start;
-	output = (char *)malloc(sizeof(char) * (len + 1));
-	if (!output)
-		return (NULL);
-	while (count < len)
-	{
-		output[count] = s[start + count];
-		count++;
-	}
-	output[count] = '\0';
-	free((void *)s);
-	return (output);
+	if (!str)
+		return (-1);
+	len = str_len(str);
+	if (from >= len)
+		return (0);
+	efigy = str;
+	str = (char *)mem_calloc(size + 1, sizeof(char));
+	i = -1;
+	while (efigy[++i + from] && i < size)
+		str[i] = efigy[i + from];
+	free(efigy);
+	return (1);
 }

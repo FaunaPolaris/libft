@@ -1,6 +1,6 @@
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_chrcnt(const char *str, int c)
+int	char_count(const char *str, int c)
 {
 	int	i;
 	int	output;

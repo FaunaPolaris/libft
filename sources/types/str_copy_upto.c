@@ -1,13 +1,13 @@
 #include "libft.h"
 
-char	*fp_strcpyto(char *str, int c)
+char	*str_copy_upto(char *str, int c)
 {
 	char	*output;
 	int		i;
 
 	if (!str)
 		return (NULL);
-	output = (char *)fp_calloc(fp_strlen(str) + 1, sizeof(char));
+	output = (char *)mem_calloc(str_len(str) + 1, sizeof(char));
 	if (!output)
 		return (NULL);
 	i = -1;

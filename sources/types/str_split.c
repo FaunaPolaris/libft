@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	**fp_split(const char *str, int c)
+char	**str_split(const char *str, int c)
 {
 	char	**output;
 	char		*p;
@@ -21,12 +21,12 @@ char	**fp_split(const char *str, int c)
 
 	if (!str)
 		return (NULL);
-	grid_size = fp_chrcnt(str, c) + 1;
+	grid_size = char_count(str, c) + 1;
 	if (str[0] == c)
 		grid_size--;
-	if (str[fp_strlen(str) - 1] == c)
+	if (str[str_len(str) - 1] == c)
 		grid_size--;
-	output = (char **)fp_calloc(grid_size + 1, sizeof(char *));
+	output = (char **)mem_calloc(grid_size + 1, sizeof(char *));
 	if (!output)
 		return (NULL);
 	p = (char *)str;
@@ -35,8 +35,8 @@ char	**fp_split(const char *str, int c)
 	{
 		while (p && *p == c)
 			p++;
-		output[i] = fp_strcpyto(p, c);
-		p = fp_strchr(p, c);
+		output[i] = str_copy_upto(p, c);
+		p = str_search(p, c);
 	}
 	return (output);
 }

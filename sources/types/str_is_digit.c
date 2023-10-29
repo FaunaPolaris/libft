@@ -12,15 +12,13 @@
 
 #include "libft.h"
 
-int	fp_strisnb(char *str)
+int	str_is_digit(char *str)
 {
 	int	i;
 
 	i = -1;
 	while (str[++i])
-	{
-		if (!fp_isdigit(str[i]))
+		if (!is_digit(str[i]))
 			return (0);
-	}
 	return (1);
 }

@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_striteri.c                                      :+:      :+:    :+:   */
+/*   fp_plen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 05:49:19 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 18:20:08 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/06/26 14:30:23 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/06/27 11:34:50 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-void	fp_striteri(char *s, void (*f) (unsigned int, char *))
+int	void_plen(const void *ptr)
 {
-	unsigned int	i;
+	int		output;
+	int		bitsize;
+	int		i;
+	long long	efigy;
 
-	i = 0;
-	while (s[i])
+	output = 3;
+	efigy = (long long)ptr;
+	bitsize = (sizeof(void *) * 8);
+	i = bitsize - 4;
+	while (((efigy >> i) & 0xf) == 0)
+		i -= 4;
+	while (i > 0)
 	{
-		(*f)(i, &s[i]);
-		i++;
+		output++;
+		i -= 4;
 	}
-	return ;
+	return (output);
 }

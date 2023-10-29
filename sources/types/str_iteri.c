@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strdup.c                                        :+:      :+:    :+:   */
+/*   fp_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:20:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/19 16:37:08 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/14 05:49:19 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/19 18:20:08 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	*fp_strdup(const char *s)
+void	str_iteri(char *s, void (*f) (int, char *))
 {
-	size_t	len;
-	char	*news;
+	int	i;
 
-	len = fp_strlen((char *)s);
-	news = (char *)malloc(sizeof(char) * (len + 1));
-	if (!news)
-		return (NULL);
-	fp_memcpy(news, s, len);
-	news[len] = '\0';
-	return (news);
+	i = 0;
+	while (s[i])
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
+	return ;
 }

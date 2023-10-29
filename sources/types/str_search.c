@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strjoin.c                                       :+:      :+:    :+:   */
+/*   fp_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 13:12:49 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 16:36:47 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/06 11:01:56 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/19 13:02:42 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	*fp_strjoin(char const *s1, char const *s2, int flag)
+char	*str_search(const char *s, int c)
 {
-	char	*newstr;
-
-	newstr = (char *)malloc((fp_strlen(s1)
-			+ fp_strlen(s2)) + 1 * sizeof(char));
-	if (!newstr)
+	if (!s)
 		return (NULL);
-	fp_memcpy((void *)newstr, s1, fp_strlen(s1) + 1);
-	fp_memcpy((void *)&newstr[fp_strlen(s1)], s2, fp_strlen(s2) + 1);
-	if (flag > 0)
-		free((char *)s1);
-	if (flag > 1)
-		free((char *)s2);
-	return (newstr);
+	while (*s && (*s != (char)c))
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

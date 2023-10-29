@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_plen.c                                          :+:      :+:    :+:   */
+/*   fp_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 14:30:23 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/27 11:34:50 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/09 13:12:49 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/23 16:36:47 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_plen(const void *ptr)
+char	*str_join(char const *s1, char const *s2, int flag)
 {
-	int		output;
-	int		bitsize;
-	int		i;
-	long long	efigy;
+	char	*newstr;
 
-	output = 3;
-	efigy = (long long)ptr;
-	bitsize = (sizeof(void *) * 8);
-	i = bitsize - 4;
-	while (((efigy >> i) & 0xf) == 0)
-		i -= 4;
-	while (i > 0)
-	{
-		output += 1;
-		i -= 4;
-	}
-	return (output);
+	newstr = (char *)mem_calloc(str_len(s1) + str_len(s2) + 1,
+			sizeof(char));
+	if (!newstr)
+		return (NULL);
+	mem_copy((void *)newstr, s1, str_len(s1) + 1);
+	mem_copy((void *)&newstr[str_len(s1)], s2, str_len(s2) + 1);
+	if (flag > 0)
+		free((char *)s1);
+	if (flag > 1)
+		free((char *)s2);
+	return (newstr);
 }

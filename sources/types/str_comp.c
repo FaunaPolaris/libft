@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-int	fp_strcmp(char *str1, char *str2)
+int	str_comp(char *str1, char *str2)
 {
 	int	i;
 

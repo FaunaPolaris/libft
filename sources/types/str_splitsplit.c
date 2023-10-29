@@ -1,9 +1,9 @@
-#include "libft.h"
+#include "polarium.h"
 
 static char	***st_free(char ***output, char **temp);
 static int	st_check(const char *str, int frst);
 
-char	***fp_splitsplit(const char *str, int frst, int scnd)
+char	***str_splitsplit(const char *str, int frst, int scnd)
 {
 	char	***output;
 	char		**temp;
@@ -13,16 +13,16 @@ char	***fp_splitsplit(const char *str, int frst, int scnd)
 	if (!str)
 		return (NULL);
 	height = st_check(str, frst);
-	output = (char ***)fp_calloc(height + 1, sizeof(char**));
+	output = (char ***)mem_calloc(height + 1, sizeof(char**));
 	if (!output)
 		return (NULL);
-	temp = fp_split(str, frst);
+	temp = str_split(str, frst);
 	if (!temp)
 		return (st_free(output, temp));
 	i = -1;
 	while (++i < height)
 	{
-		output[i] = fp_split(temp[i], scnd);
+		output[i] = str_split(temp[i], scnd);
 		if (!output[i])
 			return (st_free(output, temp));
 	}
@@ -33,11 +33,13 @@ char	***fp_splitsplit(const char *str, int frst, int scnd)
 static int	st_check(const char *str, int frst)
 {
 	int	output;
+	int	len;
 
-	output = fp_chrcnt(str, frst) + 1;
+	len = str_len(str);
+	output = char_count(str, frst) + 1;
 	if (str[0] == frst)
 		output--;
-	if (str[fp_strlen(str)] == frst)
+	if (str[len] == frst)
 		output--;
 	return (output);
 }
@@ -50,7 +52,7 @@ static char	***st_free(char ***output, char **temp)
 	{
 		i = -1;
 		while (output[++i])
-			fp_grdfre(output[i]);
+			grid_free(output[i]);
 		free(output);
 	}
 	if (temp)
