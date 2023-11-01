@@ -1,79 +1,105 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/28 16:11:54 by fpolaris          #+#    #+#              #
-#    Updated: 2023/09/13 12:57:07 by fpolaris         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME		=	libft.a
+NAME		=	libfpp.a
 CC		=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -g3
-
-YELLOW		=	\033[0;93m
-SET_0		=	\033[0m
-
-SRC_CONVERT	=	fp_atoi.c fp_itoa.c fp_itoa_base.c fp_atox.c
-SRC_PRINT	=	fp_putchar_fd.c fp_putendl_fd.c fp_putnbr_fd.c fp_putstr_fd.c fp_putnbr_base.c
-SRC_PRINT	+=	fp_putstr_and_len.c fp_putnbr_and_len.c fp_putpointer.c fp_putnbr_un.c
-SRC_STRING	=	fp_striteri.c fp_strchr.c fp_strdup.c fp_substr.c fp_strjoin.c fp_split.c fp_strnstr.c
-SRC_STRING	+=	fp_strrchr.c fp_strmapi.c fp_strtrim.c fp_strndup.c fp_strlen.c fp_plen.c fp_strsub.c fp_read_all.c
-SRC_STRING	+=	fp_strlcat.c fp_strlcpy.c fp_strncmp.c fp_cutstr.c get_next_line.c fp_strpadding.c
-SRC_STRING	+=	fp_strcpyto.c fp_chrcnt.c fp_splitsplit.c fp_strnxt.c fp_strisnb.c fp_strcmp.c
-SRC_MEMORY	=	fp_memmove.c fp_memcpy.c fp_memset.c fp_memchr.c fp_memcmp.c fp_bzero.c fp_calloc.c
-SRC_ISTO	=	fp_tolower.c fp_toupper.c fp_isalnum.c fp_isalpha.c fp_isascii.c fp_isdigit.c fp_isprint.c fp_ishighest.c fp_islowest.c
-SRC_ISTO	+=	fp_compare.c fp_isupper.c fp_isprime.c
-SRC_GRID	=	fp_grditr.c fp_grdnew.c fp_grdnew_sqre.c fp_grdsch_sids.c
-SRC_GRID	+=	fp_grdsch_dgns.c fp_grdlen.c fp_grdfll.c fp_grdfll_brdr.c fp_grdfre.c
-SRC_WRFR	=	fp_frmnew.c
-SRC_MATH	=	fp_lerp.c fp_pow.c
-SRC_PRINTF	=	fp_printf.c fp_precision.c fp_padding.c fp_printf_error.c fp_convert.c
-
-SRC_ALL		=	$(addprefix convert/,$(SRC_CONVERT))
-SRC_ALL		+=	$(addprefix print/,$(SRC_PRINT))
-SRC_ALL		+=	$(addprefix strings/,$(SRC_STRING))
-SRC_ALL		+=	$(addprefix memory/,$(SRC_MEMORY))
-SRC_ALL		+=	$(addprefix is_to/,$(SRC_ISTO))
-SRC_ALL		+=	$(addprefix data/,$(SRC_GRID))
-SRC_ALL		+=	$(addprefix data/,$(SRC_WRFR))
-SRC_ALL		+=	$(addprefix printf/,$(SRC_PRINTF))
-SRC_ALL		+=	$(addprefix math/,$(SRC_MATH))
-
-AR		=	ar rcs
+C_FLAGS		=	-Wall -Wextra -Werror -g3 -ggdb
+AR		=	ar rc
 RM		=	rm -rf
 
-OBJS_DIR	=	objs
-OBJS_ALL	=	$(addprefix $(OBJS_DIR)/,$(SRC_ALL:.c=.o))
+INCLUDE		=	-I ./header/
+OBJS_DIR	=	objects
+
+# sources:
+ 
+# ----------
+# types.h
+# ----------
+
+TYPE_H		=	types.a
+
+SRCS_STR	=	lcat lcpy len cut comp ncmp is_digit iteri sub
+SRCS_STR	+=	substr padding ndup dup find_str find_char rfind_char
+SRCS_STR	+=	join copy_upto split split_once splitsplit
+SRCS_STR	:=	$(addprefix sources/types/str_,$(SRCS_STR))
+SRCS_STR	:=	$(addsuffix .c,$(SRCS_STR))
+
+$(OBJS_STR)/%.o: $(SRCS_STR)
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
+
+$(TYPES_H): $(OBJS_STR)
+	@$(AR) $@ $^
+
+# ----------
+# check.h
+# ----------
+
+CHECK_H		=	check.a
+
+SRCS_CHECK	=	highest lowest
+SRCS_CHECK	:=	$(addprefix sources/check/check_, $(SRCS_CHECK))
+SRCS_CHECK	:=	$(addsuffix .c, $(SRCS_CHECK))
+
+SRCS_IS		=	alnum alpha ascii digit prime print space upper
+SRCS_IS		:=	$(addprefix sources/check/is_, $(SRCS_IS))
+SRCS_IS		:=	$(addsuffix .c, $(SRCS_IS))
+
+$(OBJS_CHECK)/%.o:%.c
+	@$(CC) $(C_FLAGS) -c $(SRCS_CHECK) -o $@ $(INCLUDE)
+
+$(OBJS_IS)/%.o:%.c
+	@$(CC) $(C_FLAGS) -c $(SRCS_IS) -o $@ $(INCLUDE)
+
+$(CHECK_H): $(OBJS_CHECK) $(OBJS_IS)
+	@$(AR) $@ $^
+
+# ----------
+# convert.h
+# ----------
+
+CONVERT_H	=	convert.a
+
+SRCS_CONV	=	atoi atoll atox itoa itoa_base toupper tolower
+SRCS_CONV	:=	$(addprefix sources/convert/conv_, $(SRCS_CONV))
+SRCS_CONV	:=	$(addsuffix .c, $(SRCS_CONV))
+
+$(OBJS_CONV)/%.o:%.c
+	@$(CC) $(C_FLAGS) -c $(SRCS_CONV) -o $@ $(INCLUDE)
+
+$(CONVERT_H): $(OBJS_CONV)
+	@$(AR) $@ $^
+
+# ----------
+# maths.h
+# ----------
+
+MATHS_H		=	maths.a
+
+SRCS_MTH	=	abs lerp pow
+SRCS_MTH	:=	$(addprefix sources/maths/mth_, $(SRCS_MTH))
+SRCS_MTH	:=	$(addsuffix .c, $(SRCS_MTH))
+
+LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H)
+
+$(OBJS_MTH)/%.o:%.c
+	@$(CC) $(C_FLAGS) -c $(SRCS_MTH) -o $@ $(INCLUDE)
+
+OBJS_ALL	= $(OBJS_STR) $(OBJS_CHECK) $(OBJS_CONV) $(OBJS_IS) $(OBJS_MTH)
+
+$(MATHS_H): $(OBJS_MTH)
+	@$(AR) $@ $^
 
 all: $(NAME)
 
-$(NAME): $(OBJS_ALL)
-	@$(AR) $(NAME) $(OBJS_ALL)
-	@echo "$(YELLOW)libft.a compiled$(SET_0)"
-
-split_test:
-	@$(CC) $(CFLAGS) $(SRC_ALL)  tests/split_test.c -I./header -o $@
-	@echo "$(YELLOW)split_test compiled$(SET_0)"
-
-padding_test:
-	@$(CC) $(CFLAGS) $(SRC_ALL)  tests/padding_test.c -I./header -o $@
-	@echo "$(YELLOW)padding_test compiled$(SET_0)"
-
-$(OBJS_DIR)/%.o:%.c
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@ -Iheader
+$(NAME): $(LIBS)
+	@if [ -f "$^" ]; then \
+	ar -r $@ $^; \
+	printf "%s added to libfpp\n" "$^"; \
+	fi
 
 clean:
 	@$(RM) $(OBJS_DIR)
-	@echo "$(YELLOW)libft.a cleared$(SET_0)"
+	@$(RM) $(LIBS)
 
 fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-.PHONY: clean all test clean fclean re gnl_test split_test

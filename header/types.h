@@ -9,6 +9,7 @@ int	int_len(int nb);
 
 char	*fd_read_all(int fd);
 char	*fd_gnl(int fd);
+char	*fd_read_upto(int fd, int c);
 
 // char
 
@@ -30,11 +31,11 @@ char	*str_padding(char *str, int padding, int c);
 char	*str_ndup(const char *s, int size);
 char	*str_dup(const char *str);
 char	*str_find_str(const char *source, const char *target, size_t len);
-char	*str_find_char(const char *s, int c, int after);
+char	*str_find_char(const char *s, int c, int jump);
 char	*str_rfind_char(const char *s, int c);
-char	*str_search(const char *s, int c);
 char	*str_join(const char *s1, const char *s2, int flag);
 char	*str_copy_upto(char *str, int c);
+char	**str_split_once(char *str, int separator, int flag);
 char	**str_split(const char *str, int c);
 char	***str_splitsplit(const char *str, int frst, int scnd);
 
