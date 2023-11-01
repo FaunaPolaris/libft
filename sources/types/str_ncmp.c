@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strndup.c                                       :+:      :+:    :+:   */
+/*   fp_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:20:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/26 17:48:57 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/10 17:10:17 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/23 10:36:09 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	*fp_strndup(const char *s, int size)
+int	str_ncmp(const char *str1, const char *str2, size_t n)
 {
 	size_t	i;
-	char	*news;
 
-	i = 0;
-	news = (char *)malloc(sizeof(char) * (size + 1));
-	if (!news)
-		return (NULL);
-	while (i < (size_t)size)
-	{
-		news[i] = s[i];
-		i++;
-	}
-	news[size] = '\0';
-	return (news);
+	i = -1;
+	if (n == 0)
+		return (0);
+	while (str1[++i] && str2[i] && str1[i] == str2[i] && i < n - 1)
+		;
+	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }

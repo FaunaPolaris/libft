@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_substr.c                                        :+:      :+:    :+:   */
+/*   fp_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 11:58:06 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/23 11:05:15 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/13 18:29:20 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 12:42:43 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*fp_substr(char const *s, unsigned int start, size_t len)
+size_t	str_lcat(char *dst, const char *src, size_t size)
 {
-	char	*subs;
+	size_t	i;
+	size_t	d_len;
 
-	if (!s)
-		return (NULL);
-	if (start > fp_strlen(s))
-		return (fp_strdup(""));
-	if (fp_strlen(s) - start >= len)
-		subs = (char *)malloc(sizeof(char) * (len + 1));
-	else
-		subs = (char *)malloc(sizeof(char) * ((fp_strlen(s) - start) + 1));
-	if (!subs)
-		return (NULL);
-	fp_strlcpy(subs, (s + start), (len + 1));
-	return (subs);
+	i = -1;
+	d_len = str_len(dst);
+	if (size < d_len)
+		return (size + str_len(src));
+	while (src[++i] && d_len + i + 1 < size)
+		dst[d_len + i] = src[i];
+	dst[d_len + i] = '\0';
+	return (d_len + fp_strlen(src));
 }

@@ -1,24 +1,24 @@
 #include "libft.h"
 
-char	*fp_strpadding(char *str, int padding)
+char	*str_padding(char *str, int padding, int c)
 {
+	char	*output;
 	int		i;
 	int		j;
-	char	*output;
 	int		len;
 
 	if (!str)
 		return (NULL);
-	len = (int)fp_strlen(str);
+	len = (int)str_len(str);
 	i = -1;
 	j = -1;
 	if (len > padding)
 		return (NULL);
-	output = (char *) fp_calloc(padding + 1, sizeof(char));
+	output = (char *)mem_calloc(padding + 1, sizeof(char));
 	if (!output)
 		return (NULL);
 	while (++i < padding - len)
-		output[i] = '0';
+		output[i] = (char)c;
 	while (++j < len)
 		output[i++] = str[j];
 	return (output);

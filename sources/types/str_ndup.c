@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strlcpy.c                                       :+:      :+:    :+:   */
+/*   fp_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 20:39:17 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 12:42:54 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/12 19:20:36 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/06/26 17:48:57 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-size_t	fp_strlcpy(char *dest, const char *src, size_t size)
+char	*str_ndup(const char *s, int size)
 {
 	size_t	i;
+	char	*news;
 
-	i = 0;
-	if (size == 0)
-		return (fp_strlen(src));
-	while (src[i] && i < size - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (fp_strlen(src));
+	i = -1;
+	news = (char *)mem_calloc(size + 1, sizeof(char));
+	if (!news)
+		return (NULL);
+	while (++i < (size_t)size)
+		news[i] = s[i];
+	return (news);
 }

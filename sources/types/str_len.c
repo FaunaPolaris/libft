@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strrchr.c                                       :+:      :+:    :+:   */
+/*   fp_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 21:01:33 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/20 18:14:51 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/26 09:24:02 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/13 20:28:04 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "polarium.h"
 
-char	*fp_strrchr(const char *s, int c)
+size_t	str_len(const char *s)
 {
-	size_t			end;
-	unsigned char	target;
+	size_t	output;
 
-	target = (unsigned char)c;
-	if (target == '\0')
-		return ((char *)&s[fp_strlen(s)]);
-	end = fp_strlen(s);
-	while (end > 0)
-	{
-		if (s[end - 1] == target)
-			return ((char *)&s[end - 1]);
-		end--;
-	}
-	return (NULL);
+	output = -1;
+	while (s[++output])
+		;
+	return (output);
 }

@@ -16,6 +16,17 @@ static char	*st_readtol(int fd, char *memory);
 static char	*st_findl(char *memory);
 static char	*st_findnextl(char *memory);
 
+char	*fd_gnl(int fd)
+{
+	static char	*memory = mem_calloc(1, sizeof(char));
+	char	*current;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	memory = fd_read_upto(fd, '\n');
+	line = 
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*memory;

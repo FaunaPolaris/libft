@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_strncmp.c                                       :+:      :+:    :+:   */
+/*   fp_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 17:10:17 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/23 10:36:09 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/09 11:58:06 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/23 11:05:15 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	fp_strncmp(const char *s1, const char *s2, size_t n)
+char	*str_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char	*subs;
+	size_t	s_len;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] == s2[i] && i < n - 1 && s1[i] && s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (!s)
+		return (NULL);
+	s_len = str_len(s);
+	if (start > s_len)
+		return (str_dup(""));
+	if (s_len - start >= len)
+		subs = (char *)mem_calloc(len + 1, sizeof(char));
+	else
+		subs = (char *)mem_calloc(s_len - start + 1, sizeof(char));
+	if (!subs)
+		return (NULL);
+	str_lcpy(subs, (s + start), (len + 1));
+	return (subs);
 }
