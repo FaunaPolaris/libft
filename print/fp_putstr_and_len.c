@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 int	fp_putstr_and_len(char *s, int fd)
 {

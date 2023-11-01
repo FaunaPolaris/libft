@@ -1,9 +1,9 @@
-#include "libft.h"
+#include "libfpp.h"
 
 void	str_subs(char *line, int old, int sub)
 {
 	size_t	i;
-	int	len;
+	size_t	len;
 
 	if (sub == '\0')
 		return ;

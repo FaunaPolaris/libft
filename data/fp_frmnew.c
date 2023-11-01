@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 static void	st_relate_center(t_wireframe **wrfrm, int width, int height);
 static void	st_relate_sides(t_wireframe **wrfrm, int width, int height);

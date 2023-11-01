@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 int	fp_putnbr_un(unsigned int nb)
 {

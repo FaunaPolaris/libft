@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 char	*str_dup(const char *s)
 {

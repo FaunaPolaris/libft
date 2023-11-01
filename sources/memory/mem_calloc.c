@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_memcpy.c                                        :+:      :+:    :+:   */
+/*   fp_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 17:44:58 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/23 11:12:15 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/05/10 16:42:43 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/23 10:19:22 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
-void	*fp_memcpy(void *dest, const void *src, size_t n)
+void	*mem_calloc(size_t nmemb, size_t size)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	void	*ret;
+	int		over;
 
-	if (!dest && !src)
+	over = nmemb * size;
+	if (over != 0 && over / size != nmemb)
 		return (NULL);
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
+	ret = (void *)malloc(nmemb * size);
+	if (ret == NULL)
+		return (NULL);
+	mem_set(ret, 0, (nmemb * size));
+	return (ret);
 }

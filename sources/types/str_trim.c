@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 char	*str_trim(char const *s1, char const *set)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 size_t	str_len(const char *s)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 int	str_cut(char *str, int from, int size)
 {
@@ -21,7 +21,7 @@ int	str_cut(char *str, int from, int size)
 	if (!str)
 		return (-1);
 	len = str_len(str);
-	if (from >= len)
+	if (from >= (int)len)
 		return (0);
 	efigy = str;
 	str = (char *)mem_calloc(size + 1, sizeof(char));

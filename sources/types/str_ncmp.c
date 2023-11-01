@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 int	str_ncmp(const char *str1, const char *str2, size_t n)
 {

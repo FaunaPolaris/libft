@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "libfpp.h"
 
 char	*str_copy_upto(char *str, int c)
 {

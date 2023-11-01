@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 char	*str_rfind_char(const char *s, int c)
 {
@@ -18,7 +18,7 @@ char	*str_rfind_char(const char *s, int c)
 	unsigned char	target;
 
 	target = (unsigned char)c;
-	end = fp_strlen(s);
+	end = str_len(s);
 	if (target == '\0')
 		return ((char *)&s[end]);
 	while (--end > 0)

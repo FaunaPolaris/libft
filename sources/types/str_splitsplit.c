@@ -1,4 +1,4 @@
-#include "polarium.h"
+#include "libfpp.h"
 
 static char	***st_free(char ***output, char **temp);
 static int	st_check(const char *str, int frst);

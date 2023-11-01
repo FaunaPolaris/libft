@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_memcmp.c                                        :+:      :+:    :+:   */
+/*   fp_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/30 21:05:03 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/05/14 09:04:33 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/30 20:39:34 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 09:01:29 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
-int	fp_memcmp(const void *s1, const void *s2, size_t n)
+void	*mem_find(const void *s, int c, size_t n)
 {
 	size_t				i;
-	const unsigned char	*p1;
-	const unsigned char	*p2;
+	const unsigned char	*str;
 
-	i = 0;
-	p1 = s1;
-	p2 = s2;
-	while (i < n)
-	{
-		if (p1[i] == p2[i])
-			i++;
-		else
-			return (p1[i] - p2[i]);
-	}
-	return (0);
+	i = -1;
+	str = (const unsigned char *)s;
+	while (++i < n)
+		if (str[i] == (unsigned char)c)
+			return ((void *)&str[i]);
+	return (NULL);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 size_t	str_lcpy(char *dst, const char *src, size_t size)
 {

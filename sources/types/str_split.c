@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 char	**str_split(const char *str, int c)
 {
@@ -36,7 +36,7 @@ char	**str_split(const char *str, int c)
 		while (p && *p == c)
 			p++;
 		output[i] = str_copy_upto(p, c);
-		p = str_search(p, c);
+		p = str_find_char(p, c, 0);
 	}
 	return (output);
 }

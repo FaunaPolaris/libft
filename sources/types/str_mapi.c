@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 char	*str_mapi(char const *s, char (*f) (unsigned int, char))
 {

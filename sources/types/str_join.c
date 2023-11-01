@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "polarium.h"
+#include "libfpp.h"
 
 char	*str_join(char const *s1, char const *s2, int flag)
 {
@@ -20,8 +20,8 @@ char	*str_join(char const *s1, char const *s2, int flag)
 			sizeof(char));
 	if (!newstr)
 		return (NULL);
-	mem_copy((void *)newstr, s1, str_len(s1) + 1);
-	mem_copy((void *)&newstr[str_len(s1)], s2, str_len(s2) + 1);
+	mem_cpy((void *)newstr, s1, str_len(s1) + 1);
+	mem_cpy((void *)&newstr[str_len(s1)], s2, str_len(s2) + 1);
 	if (flag > 0)
 		free((char *)s1);
 	if (flag > 1)

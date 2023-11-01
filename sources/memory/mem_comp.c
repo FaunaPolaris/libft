@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_memset.c                                        :+:      :+:    :+:   */
+/*   fp_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 16:26:07 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/04/27 17:02:31 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/04/30 21:05:03 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/05/14 09:04:33 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
-void	*fp_memset(void *s, int c, size_t n)
+int	mem_comp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	char	*p;
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
 	i = 0;
-	p = (char *) s;
+	p1 = s1;
+	p2 = s2;
 	while (i < n)
 	{
-		p[i] = (char)c;
-		i++;
+		if (p1[i] == p2[i])
+			i++;
+		else
+			return (p1[i] - p2[i]);
 	}
-	return (s);
+	return (0);
 }

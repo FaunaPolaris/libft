@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libfpp.h"
 
 size_t	str_lcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	d_len;
+	size_t	s_len;
 
 	i = -1;
 	d_len = str_len(dst);
+	s_len = str_len(src); 
 	if (size < d_len)
-		return (size + str_len(src));
+		return (size + s_len);
 	while (src[++i] && d_len + i + 1 < size)
 		dst[d_len + i] = src[i];
 	dst[d_len + i] = '\0';
-	return (d_len + fp_strlen(src));
+	return (d_len + s_len);
 }

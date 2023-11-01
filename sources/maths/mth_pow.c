@@ -1,4 +1,4 @@
-#include "polarium.h"
+#include "libfpp.h"
 
 int	mth_pow(int operand, int power)
 {
