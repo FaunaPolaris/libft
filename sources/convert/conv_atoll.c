@@ -23,7 +23,7 @@ long long int	fp_atoll(const char *nptr)
 	i = 0;
 	neg = 1;
 	res = 0;
-	while (fp_ispace(nptr[i]))
+	while (is_space(nptr[i]))
 		i++;
 	if (*(nptr + i) == '-')
 		neg = -1;

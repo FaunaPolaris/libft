@@ -8,14 +8,15 @@
 # include <math.h>
 # include <time.h>
 
+#include "definitions.h"
+#include "structures.h"
 #include "memory.h"
-#include "grid.h"
+#include "data.h"
 #include "types.h"
 #include "convert.h"
 #include "check.h"
 #include "maths.h"
-
-# define TRUE 1
-# define FALSE 0
+#include "printing.h"
+#include "printf.h"
 
 #endif

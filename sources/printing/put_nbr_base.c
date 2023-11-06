@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   fp_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 14:35:52 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 16:35:57 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/06/23 20:01:31 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/07/10 15:11:19 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-char	*fd_gnl(int fd)
+int	put_nbr_base(unsigned int nb, int base, int up)
 {
-	static char	*memory = NULL;
-	char	**hold;
-	char	*current;
-
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
-	memory = str_join(memory, fd_read_upto(fd, '\n'), 2);
-	hold = str_split_once(memory, '\n', 1);
-	current = hold[0];
-	memory = hold[1];
-	free(hold);
-	return (current);
+	if ((nb / base) > 0)
+		put_nbr_base(nb / base, base, up);
+	nb %= base;
+	if (nb < 10)
+		put_char('0' + nb, 1);
+	if (nb > 10 && up == 0)
+		put_char('a' + nb - 10, 1);
+	if (nb > 10 && up == 1)
+		put_char('A' + nb - 10, 1);
+	return (int_len_base(nb, base));
 }

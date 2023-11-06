@@ -1,6 +1,6 @@
 #include "libfpp.h"
 
-static void	st_recurse(int nb, int len, char *output)
+static void	st_recurse(int nb, int len, char *output);
 
 char	*conv_itoa(int nb)
 {
@@ -9,11 +9,11 @@ char	*conv_itoa(int nb)
 
 	len = int_len(nb);
 	output = (char *)mem_calloc(len + 1, sizeof(char));
-	if (!news)
+	if (!output)
 		return (NULL);
 	if (nb < 0)
 		output[0] = '-';
-	st_recurse(nb, len - 1, news);
+	st_recurse(nb, len - 1, output);
 	return (output);
 }
 
@@ -21,5 +21,5 @@ static void	st_recurse(int nb, int len, char *output)
 {
 	output[len] = mth_abs(nb % 10) + 48;
 	if (mth_abs(nb) > 9)
-		st_recurse(n * .1, len - 1, output);
+		st_recurse(nb * .1, len - 1, output);
 }

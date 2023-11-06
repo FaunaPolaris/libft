@@ -4,6 +4,7 @@
 // int
 
 int	int_len(int nb);
+int	int_len_base(int nb, int base);
 
 // int fd
 

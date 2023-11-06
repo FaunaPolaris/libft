@@ -4,7 +4,7 @@ C_FLAGS		=	-Wall -Wextra -Werror -g3 -ggdb
 AR		=	ar rcs
 RM		=	rm -rf
 
-LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(GRID_H) $(MEMORY_H)
+LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H)
 
 INCLUDE		=	-I ./header/
 
@@ -24,11 +24,51 @@ SRCS_STR	:=	$(addprefix sources/types/str_,$(SRCS_STR))
 SRCS_STR	:=	$(addsuffix .c,$(SRCS_STR))
 OBJS_STR	=	$(addprefix $(OBJS_STR_DIR)/, $(SRCS_STR:.c=.o))
 
+OBJS_CHAR_DIR	=	objects
+SRCS_CHAR	=	count
+SRCS_CHAR	:=	$(addprefix sources/types/char_,$(SRCS_CHAR))
+SRCS_CHAR	:=	$(addsuffix .c,$(SRCS_CHAR))
+OBJS_CHAR	=	$(addprefix $(OBJS_CHAR_DIR)/, $(SRCS_CHAR:.c=.o))
+
+OBJS_FD_DIR	=	objects
+SRCS_FD		=	gnl read_all read_upto
+SRCS_FD		:=	$(addprefix sources/types/fd_,$(SRCS_FD))
+SRCS_FD		:=	$(addsuffix .c,$(SRCS_FD))
+OBJS_FD		=	$(addprefix $(OBJS_FD_DIR)/, $(SRCS_FD:.c=.o))
+
+OBJS_INT_DIR	=	objects
+SRCS_INT	=	len len_base
+SRCS_INT	:=	$(addprefix sources/types/int_,$(SRCS_INT))
+SRCS_INT	:=	$(addsuffix .c,$(SRCS_INT))
+OBJS_INT	=	$(addprefix $(OBJS_INT_DIR)/, $(SRCS_INT:.c=.o))
+
+OBJS_VOID_DIR	=	objects
+SRCS_VOID	=	plen
+SRCS_VOID	:=	$(addprefix sources/types/void_,$(SRCS_VOID))
+SRCS_VOID	:=	$(addsuffix .c,$(SRCS_VOID))
+OBJS_VOID	=	$(addprefix $(OBJS_VOID_DIR)/, $(SRCS_VOID:.c=.o))
+
+$(OBJS_VOID_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_INT_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_FD_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_CHAR_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
+
 $(OBJS_STR_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
 
-$(TYPES_H): $(OBJS_STR)
+$(TYPES_H): $(OBJS_STR) $(OBJS_CHAR) $(OBJS_FD) $(OBJS_INT) $(OBJS_VOID)
 	@$(AR) $@ $^
 
 # ----------
@@ -70,7 +110,7 @@ OBJS_CONV_DIR	=	objects
 SRCS_CONV	=	atoi atoll atox itoa itoa_base toupper tolower
 SRCS_CONV	:=	$(addprefix sources/convert/conv_, $(SRCS_CONV))
 SRCS_CONV	:=	$(addsuffix .c, $(SRCS_CONV))
-OBJS_CONV	=	$(addprefix $(OBJS_CONV_DIR), $(SRCS_CONV:.c=.o))
+OBJS_CONV	=	$(addprefix $(OBJS_CONV_DIR)/, $(SRCS_CONV:.c=.o))
 
 $(OBJS_CONV_DIR)/%.o:%.c
 	@mkdir -p $(@D)
@@ -89,7 +129,7 @@ OBJS_MTH_DIR	=	objects
 SRCS_MTH	=	abs lerp pow
 SRCS_MTH	:=	$(addprefix sources/maths/mth_, $(SRCS_MTH))
 SRCS_MTH	:=	$(addsuffix .c, $(SRCS_MTH))
-OBJS_MTH	=	$(addprefix $(OBJS_MTH_DIR), $(SRCS_MTH:.c=.o))
+OBJS_MTH	=	$(addprefix $(OBJS_MTH_DIR)/, $(SRCS_MTH:.c=.o))
 
 $(OBJS_MTH_DIR)/%.o:%.c
 	@mkdir -p $(@D)
@@ -118,25 +158,73 @@ $(MEMORY_H): $(OBJS_MEM)
 	@$(AR) $@ $^
 
 # ----------
-#  grid.h
+#  data.h
 # ----------
 
-GRID_H		=	grid.a
+DATA_H		=	data.a
 
 OBJS_GRID_DIR	=	objects
-SRCS_GRID	=	free free3
-SRCS_GRID	:=	$(addprefix sources/grid/grid_, $(SRCS_GRID))
+SRCS_GRID	=	free new countd counts fillbrdr fill iter len newsqr
+SRCS_GRID	:=	$(addprefix sources/data/grid_, $(SRCS_GRID))
 SRCS_GRID	:=	$(addsuffix .c, $(SRCS_GRID))
-OBJS_GRID	=	$(addprefix $(OBJS_GRID_DIR)/, $(SRCS_MEM:.c.o))
+OBJS_GRID	=	$(addprefix $(OBJS_GRID_DIR)/, $(SRCS_GRID:.c=.o))
+
+OBJS_FRM_DIR	=	objects
+SRCS_FRM	=	new
+SRCS_FRM	:=	$(addprefix sources/data/frm_, $(SRCS_FRM))
+SRCS_FRM	:=	$(addsuffix .c, $(SRCS_FRM))
+OBJS_FRM	=	$(addprefix $(OBJS_FRM_DIR)/, $(SRCS_FRM:.c=.o))
 
 $(OBJS_GRID_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
-$(GRID_H): $(OBJS_GRID)
+$(OBJS_FRM_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(DATA_H): $(OBJS_GRID) $(OBJS_FRM)
 	@$(AR) $@ $^
 
-all: $(NAME)
+# ----------
+#  printing.h
+# ----------
+
+PRINTING_H	=	printing.a
+
+OBJS_PUT_DIR	=	objects
+SRCS_PUT	=	char endl nbr_base nbr pointer str
+SRCS_PUT	:=	$(addprefix sources/printing/put_, $(SRCS_PUT))
+SRCS_PUT	:=	$(addsuffix .c, $(SRCS_PUT))
+OBJS_PUT	=	$(addprefix $(OBJS_PUT_DIR)/, $(SRCS_PUT:.c=.o))
+
+$(OBJS_PUT_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(PRINTING_H): $(OBJS_PUT)
+	@$(AR) $@ $^
+
+# ----------
+#  printf.h
+# ----------
+
+PRINTF_H	=	printf.a
+
+OBJS_FP_DIR	=	objects
+SRCS_FP		=	printf printf_error precision padding convert
+SRCS_FP		:=	$(addprefix sources/printf/fp_, $(SRCS_FP))
+SRCS_FP		:=	$(addsuffix .c, $(SRCS_FP))
+OBJS_FP		=	$(addprefix $(OBJS_FP_DIR)/, $(SRCS_FP:.c=.o))
+
+$(OBJS_FP_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(PRINTF_H): $(OBJS_FP)
+	@$(AR) $@ $^
+
+all: $(LIBS) $(NAME)
 
 $(NAME):
 	@for lib in $(LIBS); do \
