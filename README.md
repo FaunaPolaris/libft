@@ -7,6 +7,10 @@ In development **1.3.0**
 planned fatures:  
 
 - new folder and naming structures;
+- new Makefile structure to compile different functions individually;
+- add functions made for other projects like graphical functions from `fdf` and linked list functions from `push_swap`
+
+This verions purpose is to have a complete header full of all the funcions i have created during my 42 projects, being useful for more complex projects like `minishel` and `minirt`, while also being a central hub of my favorite codes.  
 
 ### Version History
 - 1.2.1  
