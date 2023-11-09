@@ -175,6 +175,20 @@ SRCS_FRM	:=	$(addprefix sources/data/frm_, $(SRCS_FRM))
 SRCS_FRM	:=	$(addsuffix .c, $(SRCS_FRM))
 OBJS_FRM	=	$(addprefix $(OBJS_FRM_DIR)/, $(SRCS_FRM:.c=.o))
 
+OBJS_DLL_DIR	=	objects
+SRCS_DLL	=	add_back add_frnt clear closest closest_hgher dindex
+SRCS_DLL	+=	di_haslower di_lowerb di_lowerf di_value di_lower
+SRCS_DLL	+=	find_end has has_dupls has_hgher has_lower highest index
+SRCS_DLL	+=	is_crescent lindex2 lindex3 lowest mediam new new_node
+SRCS_DLL	+=	next_hgher next_lower pointer rindex rlindex2 rlindex3 size
+SRCS_DLL	:=	$(addprefix sources/data/llist/dll_, $(SRCS_DLL))
+SRCS_DLL	:=	$(addsuffix .c, $(SRCS_DLL))
+OBJS_DLL	=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
+
+$(OBJS_DLL_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
 $(OBJS_GRID_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
@@ -193,7 +207,7 @@ $(DATA_H): $(OBJS_GRID) $(OBJS_FRM)
 PRINTING_H	=	printing.a
 
 OBJS_PUT_DIR	=	objects
-SRCS_PUT	=	char endl nbr_base nbr pointer str
+SRCS_PUT	=	char endl nbr_base nbr pointer str dll
 SRCS_PUT	:=	$(addprefix sources/printing/put_, $(SRCS_PUT))
 SRCS_PUT	:=	$(addsuffix .c, $(SRCS_PUT))
 OBJS_PUT	=	$(addprefix $(OBJS_PUT_DIR)/, $(SRCS_PUT:.c=.o))

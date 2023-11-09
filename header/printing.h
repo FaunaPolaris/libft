@@ -7,5 +7,7 @@ int	put_nbr(int n, int fd);
 int	put_nbr_base(unsigned int nb, int base, int up);
 int	put_pointer(const void *ptr);
 int	put_endl(char *s, int fd);
+int	put_dll(t_dllist *head, int fd);
+
 
 #endif
