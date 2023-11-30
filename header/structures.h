@@ -12,6 +12,14 @@ typedef struct s_printf
 
 // data
 
+typedef struct s_dllist
+{
+	struct s_dllist	*next;
+	struct s_dllist *prev;
+	int				dindex;
+	int				as_int;
+}	t_dllist;
+
 typedef struct s_wireframe
 {
 	struct s_wireframe	*xplus;

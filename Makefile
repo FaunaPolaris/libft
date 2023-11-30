@@ -238,7 +238,7 @@ $(OBJS_FP_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(PRINTF_H): $(OBJS_FP)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 
 $(NAME):

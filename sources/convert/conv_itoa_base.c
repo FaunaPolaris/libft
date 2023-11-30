@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_itoa_base.c                                     :+:      :+:    :+:   */
+/*   conv_itoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nprudenc <nprudenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:14:21 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/06/27 08:36:27 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:56:33 by nprudenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	recurse(unsigned int nb, int base, char **output, int a)
 		output[0][a] = 'a' + nb - 10;
 }
 
-char	*fp_itoa_base(unsigned int nb, int base)
+char	*conv_itoa_base(unsigned int nb, int base)
 {
 	char	*output;
 	int	a;

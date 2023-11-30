@@ -1,6 +1,6 @@
 #include "libfpp.h"
 
-int	ispace(int c)
+int	is_space(int c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
