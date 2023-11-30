@@ -8,6 +8,8 @@ LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PR
 
 INCLUDE		=	-I ./header/
 
+all: $(LIBS) $(NAME)
+
 # sources:
  
 # ----------
@@ -69,7 +71,7 @@ $(OBJS_STR_DIR)/%.o: %.c
 	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
 
 $(TYPES_H): $(OBJS_STR) $(OBJS_CHAR) $(OBJS_FD) $(OBJS_INT) $(OBJS_VOID)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 # check.h
@@ -98,7 +100,7 @@ $(OBJS_IS_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(CHECK_H): $(OBJS_CHECK) $(OBJS_IS)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 # convert.h
@@ -117,7 +119,7 @@ $(OBJS_CONV_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(CONVERT_H): $(OBJS_CONV)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 # maths.h
@@ -136,7 +138,7 @@ $(OBJS_MTH_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(MATHS_H): $(OBJS_MTH)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 #  memory.h
@@ -155,7 +157,7 @@ $(OBJS_MEM_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(MEMORY_H): $(OBJS_MEM)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 #  data.h
@@ -184,7 +186,7 @@ $(OBJS_FRM_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(DATA_H): $(OBJS_GRID) $(OBJS_FRM)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 #  printing.h
@@ -203,7 +205,7 @@ $(OBJS_PUT_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(PRINTING_H): $(OBJS_PUT)
-	@$(AR) $@ $^
+	@$(AR) $(NAME) $^
 
 # ----------
 #  printf.h
@@ -224,15 +226,9 @@ $(OBJS_FP_DIR)/%.o:%.c
 $(PRINTF_H): $(OBJS_FP)
 	@$(AR) $@ $^
 
-all: $(LIBS) $(NAME)
 
 $(NAME):
-	@for lib in $(LIBS); do \
-		if [ -f "$$lib" ]; then \
-			ar -r $@ $$lib; \
-			printf "%s added to $@\n" $$lib; \
-		fi; \
-	done
+	ar -t $@
 
 clean:
 	@$(RM) objects
