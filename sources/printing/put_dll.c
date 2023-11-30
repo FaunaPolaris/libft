@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_putlist.c                                      :+:      :+:    :+:   */
+/*   put_dll.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nprudenc <nprudenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:26:27 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/10/04 15:26:28 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:40:47 by nprudenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "llist.h"
+#include "libfpp.h"
 
 int	put_dll(t_dllist *head, int fd)
 {
@@ -18,7 +18,7 @@ int	put_dll(t_dllist *head, int fd)
 
 	output = 0;
 	if (!head)
-		return ;
+		return (0);
 	while (head)
 	{
 		output += put_nbr(head->as_int, fd);
