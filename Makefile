@@ -4,6 +4,9 @@ C_FLAGS		=	-Wall -Wextra -Werror -g3 -ggdb
 AR		=	ar rcs
 RM		=	rm -rf
 
+RESET		=	\033[0m
+RED		=	\033[0;36m
+
 LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H)
 
 INCLUDE		=	-I ./header/
@@ -71,6 +74,7 @@ $(OBJS_STR_DIR)/%.o: %.c
 	@$(CC) $(C_FLAGS) -c $< -o $@ $(INCLUDE)
 
 $(TYPES_H): $(OBJS_STR) $(OBJS_CHAR) $(OBJS_FD) $(OBJS_INT) $(OBJS_VOID)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -100,6 +104,7 @@ $(OBJS_IS_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(CHECK_H): $(OBJS_CHECK) $(OBJS_IS)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -119,6 +124,7 @@ $(OBJS_CONV_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(CONVERT_H): $(OBJS_CONV)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -138,6 +144,7 @@ $(OBJS_MTH_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(MATHS_H): $(OBJS_MTH)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -157,6 +164,7 @@ $(OBJS_MEM_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(MEMORY_H): $(OBJS_MEM)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -200,6 +208,7 @@ $(OBJS_FRM_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(DATA_H): $(OBJS_GRID) $(OBJS_FRM)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -219,6 +228,7 @@ $(OBJS_PUT_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(PRINTING_H): $(OBJS_PUT)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 # ----------
@@ -238,6 +248,7 @@ $(OBJS_FP_DIR)/%.o:%.c
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(PRINTF_H): $(OBJS_FP)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
 

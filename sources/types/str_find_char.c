@@ -11,5 +11,5 @@ char	*str_find_char(const char *s, int c, int jump)
 		;
 	if (s[i] && s[i] == (char)c && jump < i - (int)len)
 		return ((char *)&s[i + jump]);
-	return (NULL);
+	return ((char *)&s[i]);
 }
