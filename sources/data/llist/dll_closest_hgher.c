@@ -1,4 +1,4 @@
-#include "llist.h"
+#include "libfpp.h"
 
 int		dll_closest_hgher(t_dllist *head, int to)
 {
@@ -7,7 +7,7 @@ int		dll_closest_hgher(t_dllist *head, int to)
 
 	temp = head;
 	high_close = dll_highest(head);
-	if (!dll_has_higher(head, to))
+	if (!dll_has_hgher(head, to))
 		return (dll_lowest(head));
 	while (temp)
 	{

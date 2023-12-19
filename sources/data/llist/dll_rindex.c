@@ -1,4 +1,4 @@
-#include "llist.h"
+#include "libfpp.h"
 
 int	dll_rindex(t_dllist *head, int of)
 {
@@ -6,7 +6,7 @@ int	dll_rindex(t_dllist *head, int of)
 	int		i;
 
 	i = 0;
-	temp = dll_fnd_back(head);
+	temp = dll_find_back(head);
 	while (temp)
 	{
 		i++;

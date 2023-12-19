@@ -207,7 +207,7 @@ $(OBJS_FRM_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
-$(DATA_H): $(OBJS_GRID) $(OBJS_FRM)
+$(DATA_H): $(OBJS_GRID) $(OBJS_FRM) $(OBJS_DLL)
 	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
