@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_new_node.c                                     :+:      :+:    :+:   */
+/*   stck_rott_rgt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:16:22 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/10/04 14:16:23 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/10/06 16:43:03 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/06 16:43:04 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-t_dllist	*dll_node_new(void *value)
+int	stck_rott_rgt(t_stack *stack, int print)
 {
-	t_dllist	*output;
-
-	output = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
-	if (!output)
-		return (NULL);
-	output->as_str = (char *)value;
-	output->as_int = conv_atoi((char *)value);
-	output->next = NULL;
-	output->prev = NULL;
-	return (output);
+	if (!stack->top || !stack->bot)
+		return (0);
+	if (stack->top == stack->bot)
+		return (0);
+	else
+	{
+		stack->bot->next = stack->top;
+		stack->top->prev = stack->bot;
+		stack->top = stack->bot;
+		stack->bot->prev->next = NULL;
+		stack->bot = stack->bot->prev;
+		stack->top->prev = NULL;
+	}
+	if (print)
+		fp_printf("rr%c\n", stack->id);
+	return (1);
 }

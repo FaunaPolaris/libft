@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_new_node.c                                     :+:      :+:    :+:   */
+/*   stck_highest_to_top.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:16:22 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/10/04 14:16:23 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/10/19 14:42:53 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/19 14:42:54 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-t_dllist	*dll_node_new(void *value)
+int	stck_highest_to_top(t_stack *stack)
 {
-	t_dllist	*output;
+	int	highest;
+	int	i;
 
-	output = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
-	if (!output)
-		return (NULL);
-	output->as_str = (char *)value;
-	output->as_int = conv_atoi((char *)value);
-	output->next = NULL;
-	output->prev = NULL;
-	return (output);
+	highest = dll_highest(stack->top);
+	i = 0;
+	while (stack->top->as_int != highest)
+	{
+		if (dll_index(stack->top, highest)
+			< (dll_size(stack->top) * .5) + 1)
+			stck_rott_lft(stack, 1);
+		else
+			stck_rott_rgt(stack, 1);
+		i++;
+	}
+	return (i);
 }

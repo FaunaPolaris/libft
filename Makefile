@@ -7,7 +7,7 @@ RM		=	rm -rf
 RESET		=	\033[0m
 RED		=	\033[0;36m
 
-LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H)
+LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H)
 
 INCLUDE		=	-I ./header/
 
@@ -251,6 +251,26 @@ $(PRINTF_H): $(OBJS_FP)
 	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
+# ----------
+# stack.h
+# ----------
+
+STACK_H		=	stack.a
+
+OBJS_STCK_DIR	=	objects
+SRCS_STCK	=	disp highest_to_front new pop push_all push rott_lft rott_lft_double
+SRCS_STCK	+=	rott_rgt rott_rgt_double rpush_tab swap
+SRCS_STCK	:=	$(addprefix sources/data/stack/stck_, $(SRCS_STCK))
+SRCS_STCK	:=	$(addsuffix .c, $(SRCS_STCK))
+OBJS_STCK	=	$(addprefix $(OBJS_STCK_DIR)/, $(SRCS_STCK:.c=.o))
+
+$(OBJS_STCK_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(STACK_H): $(OBJS_STCK)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
+	@$(AR) $(NAME) $^
 
 $(NAME):
 	ar -t $@

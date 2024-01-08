@@ -18,7 +18,15 @@ typedef struct s_dllist
 	struct s_dllist *prev;
 	int				dindex;
 	int				as_int;
+	char		*as_str;
 }	t_dllist;
+
+typedef struct s_stack
+{
+	t_dllist	*top;
+	t_dllist	*bot;
+	char		id;
+}	t_stack;
 
 typedef struct s_wireframe
 {

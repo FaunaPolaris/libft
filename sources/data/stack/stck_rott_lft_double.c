@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_dll.c                                          :+:      :+:    :+:   */
+/*   stck_rott_lft_double.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nprudenc <nprudenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 15:26:27 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/11/30 17:40:47 by nprudenc         ###   ########.fr       */
+/*   Created: 2023/10/06 17:26:28 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/06 19:27:22 by nprudenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-int	put_dll(t_dllist *head, int fd)
+int	stck_rott_lft_double(t_stack *stack_a, t_stack *stack_b)
 {
-	int	output;
-
-	output = 0;
-	if (!head)
-		return (0);
-	while (head)
-	{
-		output += put_str(head->as_str, fd);
-		if (head->next)
-		{
-			write(fd, " <- -> ", 7);
-			output += 7;
-		}
-		head = head->next;
-	}
-	write(fd, "\n", 1);
-	return (output + 1);
+	stck_rott_lft(stack_a, 0);
+	stck_rott_lft(stack_b, 0);
+	put_endl("rr", 1);
+	return (1);
 }

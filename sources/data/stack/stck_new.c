@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_new_node.c                                     :+:      :+:    :+:   */
+/*   stck_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:16:22 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/10/04 14:16:23 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/10/06 11:33:22 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/06 11:33:23 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-t_dllist	*dll_node_new(void *value)
+t_stack	*stck_new(void **values, char id)
 {
-	t_dllist	*output;
+	t_dllist	*list;
+	t_stack		*output;
 
-	output = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
+	output = (t_stack *)mem_calloc(1, sizeof(t_stack));
 	if (!output)
 		return (NULL);
-	output->as_str = (char *)value;
-	output->as_int = conv_atoi((char *)value);
-	output->next = NULL;
-	output->prev = NULL;
+	list = dll_new(values);
+	output->id = id;
+	output->top = list;
+	if (list && list->next)
+		output->bot = dll_find_back(list);
+	else
+		output->bot = NULL;
 	return (output);
+}
+
+void	stck_rmv(t_stack *stack)
+{
+	dll_clear(&stack->top);
+	free(stack);
 }

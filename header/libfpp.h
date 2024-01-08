@@ -8,16 +8,17 @@
 # include <math.h>
 # include <time.h>
 
-#include "definitions.h"
-#include "structures.h"
-#include "memory.h"
-#include "data.h"
-#include "types.h"
-#include "convert.h"
-#include "check.h"
-#include "maths.h"
-#include "printing.h"
-#include "printf.h"
-#include "linked_list.h"
+# include "definitions.h"
+# include "structures.h"
+# include "memory.h"
+# include "data.h"
+# include "types.h"
+# include "convert.h"
+# include "check.h"
+# include "maths.h"
+# include "printing.h"
+# include "printf.h"
+# include "linked_list.h"
+# include "stack.h"
 
 #endif

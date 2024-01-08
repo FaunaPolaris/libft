@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_new_node.c                                     :+:      :+:    :+:   */
+/*   stck_rott_rgt_double.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:16:22 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/10/04 14:16:23 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/10/06 17:28:13 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/10/06 17:28:14 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfpp.h"
 
-t_dllist	*dll_node_new(void *value)
+int	stck_rott_rgt_double(t_stack *stack_a, t_stack *stack_b)
 {
-	t_dllist	*output;
-
-	output = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
-	if (!output)
-		return (NULL);
-	output->as_str = (char *)value;
-	output->as_int = conv_atoi((char *)value);
-	output->next = NULL;
-	output->prev = NULL;
-	return (output);
+	stck_rott_rgt(stack_a, 0);
+	stck_rott_rgt(stack_b, 0);
+	put_endl("rrr", 1);
+	return (1);
 }
