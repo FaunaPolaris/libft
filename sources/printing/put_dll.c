@@ -24,11 +24,11 @@ int	put_dll(t_dllist *head, int fd)
 		output += put_str(head->as_str, fd);
 		if (head->next)
 		{
-			write(fd, " <- -> ", 7);
-			output += 7;
+			write(fd, " <-> ", 5);
+			output += 5;
 		}
 		head = head->next;
 	}
-	write(fd, "\n", 1);
-	return (output + 1);
+	write(fd, "\n\n", 2);
+	return (output + 2);
 }

@@ -25,7 +25,7 @@ void	stck_disp(t_stack *stack)
 		walker = walker->next;
 	}
 	if (stack->top && stack->bot)
-		printf("\033[1;32m%i | %i \033[0m\n",
+		printf("\n\033[1;32m%i | %i \033[0m\n",
 				stack->top->as_int,
 				stack->bot->as_int);
 	write (1, "\n", 1);
