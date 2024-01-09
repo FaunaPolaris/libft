@@ -134,7 +134,7 @@ $(CONVERT_H): $(OBJS_CONV)
 MATHS_H		=	maths.a
 
 OBJS_MTH_DIR	=	objects
-SRCS_MTH	=	abs lerp pow
+SRCS_MTH	=	abs lerp pow sqrt
 SRCS_MTH	:=	$(addprefix sources/maths/mth_, $(SRCS_MTH))
 SRCS_MTH	:=	$(addsuffix .c, $(SRCS_MTH))
 OBJS_MTH	=	$(addprefix $(OBJS_MTH_DIR)/, $(SRCS_MTH:.c=.o))

@@ -1,22 +1,22 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-// int
+// integer types
 
 int	int_len(int nb);
 int	int_len_base(int nb, int base);
 
-// int fd
+// integer as file descriptor (abstraction)
 
 char	*fd_read_all(int fd);
 char	*fd_gnl(int fd);
 char	*fd_read_upto(int fd, int c);
 
-// char
+// char types
 
 int	char_count(const char *str, int c);
 
-// char* (str)
+// 	char* (str)
 
 size_t	str_lcat(char *dst, const char *src, size_t size);
 size_t	str_lcpy(char *dst, const char *src, size_t size);
@@ -40,7 +40,7 @@ char	**str_split_once(char *str, int separator, int flag);
 char	**str_split(const char *str, int c);
 char	***str_splitsplit(const char *str, int frst, int scnd);
 
-// void
+// void (move to memory managment functions)
 
 int	void_plen(const void *ptr);
 

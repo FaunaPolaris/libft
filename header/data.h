@@ -6,7 +6,7 @@
 t_wireframe	**frm_new(int width, int height);
 void		frm_free(t_wireframe **wrfrm);
 
-// grid
+// grid (char **)
 
 char	**grid_new(int width, int height);
 char	**grid_newsqr(int area);

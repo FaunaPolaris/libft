@@ -1,6 +1,8 @@
 #ifndef LIBFPP_H
 # define LIBFPP_H
 
+// standard libraries
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
@@ -8,8 +10,13 @@
 # include <math.h>
 # include <time.h>
 
+// auxiliary libraries
+
 # include "definitions.h"
 # include "structures.h"
+
+// custon libraries
+
 # include "memory.h"
 # include "data.h"
 # include "types.h"

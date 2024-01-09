@@ -7,11 +7,10 @@ typedef struct s_printf
 {
 	char	*line;
 	char	**flags;
-	
 }	t_printf;
 
 // data
-
+//		doubly linked list
 typedef struct s_dllist
 {
 	struct s_dllist	*next;
@@ -21,6 +20,7 @@ typedef struct s_dllist
 	char		*as_str;
 }	t_dllist;
 
+//		stack
 typedef struct s_stack
 {
 	t_dllist	*top;
@@ -28,6 +28,7 @@ typedef struct s_stack
 	char		id;
 }	t_stack;
 
+//		wireframe
 typedef struct s_wireframe
 {
 	struct s_wireframe	*xplus;
