@@ -10,6 +10,7 @@ void		frm_free(t_wireframe **wrfrm);
 
 char	**grid_new(int width, int height);
 char	**grid_newsqr(int area);
+char	**grid_add_element(char **grid, char *value);
 void	grid_free(char **grid);
 void	grid_free3(char ***grid);
 void	grid_fillbrdr(char **grid, char fill, int width, int height);

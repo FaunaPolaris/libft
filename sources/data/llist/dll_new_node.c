@@ -12,15 +12,15 @@
 
 #include "libfpp.h"
 
-t_dllist	*dll_node_new(void *value)
+t_dllist	*dll_node_new(char *value)
 {
 	t_dllist	*output;
 
 	output = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
 	if (!output)
 		return (NULL);
-	output->as_str = (char *)value;
-	output->as_int = conv_atoi((char *)value);
+	output->as_str = str_dup(value);
+	output->as_int = conv_atoi(value);
 	output->next = NULL;
 	output->prev = NULL;
 	return (output);

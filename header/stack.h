@@ -1,9 +1,10 @@
 #ifndef STACK_H
 #define STACK_H
 
-// basic create / delete
+// create / delete
 
-t_stack	*stck_new(void **values, char id);
+t_stack	*stck_new(char **values, char id);
+t_stack	*stck_empty(char id);
 void	stck_rmv(t_stack *stack);
 
 // push_swap basic movements
@@ -30,5 +31,10 @@ void	stck_disp(t_stack *stack);
 // adding elements (breaks push_swap rules)
 
 void	stck_rpush_tab(t_stack *stack, char **input);
+void	stck_push_str(t_stack *stack, char *input);
+
+// utilitary functions
+
+int	stck_is_empty(t_stack *stack);
 
 #endif

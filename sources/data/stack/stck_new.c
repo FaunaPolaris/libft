@@ -12,7 +12,7 @@
 
 #include "libfpp.h"
 
-t_stack	*stck_new(void **values, char id)
+t_stack	*stck_new(char **values, char id)
 {
 	t_dllist	*list;
 	t_stack		*output;

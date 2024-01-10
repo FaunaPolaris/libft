@@ -12,7 +12,7 @@
 
 #include "libfpp.h"
 
-int	dll_add_back(t_dllist *head, void *value)
+int	dll_add_back(t_dllist *head, char *value)
 {
 	head = dll_find_back(head);
 	head->next = dll_node_new(value);

@@ -5,11 +5,11 @@
 
 //	 creation and deletion:
 
-t_dllist	*dll_new(void **values);
-t_dllist	*dll_node_new(void *values);
+t_dllist	*dll_new(char **values);
+t_dllist	*dll_node_new(char *values);
 
-int	dll_add_back(t_dllist *head, void *value);
-int	dll_add_frnt(t_dllist **head, void *value);
+int	dll_add_back(t_dllist *head, char *value);
+int	dll_add_frnt(t_dllist **head, char *value);
 
 void	dll_clear(t_dllist **head);
 

@@ -174,7 +174,7 @@ $(MEMORY_H): $(OBJS_MEM)
 DATA_H		=	data.a
 
 OBJS_GRID_DIR	=	objects
-SRCS_GRID	=	free new countd counts fillbrdr fill iter len newsqr
+SRCS_GRID	=	free new countd counts fillbrdr fill iter len newsqr add_element
 SRCS_GRID	:=	$(addprefix sources/data/grid_, $(SRCS_GRID))
 SRCS_GRID	:=	$(addsuffix .c, $(SRCS_GRID))
 OBJS_GRID	=	$(addprefix $(OBJS_GRID_DIR)/, $(SRCS_GRID:.c=.o))
@@ -259,7 +259,7 @@ STACK_H		=	stack.a
 
 OBJS_STCK_DIR	=	objects
 SRCS_STCK	=	disp highest_to_front new pop push_all push rott_lft rott_lft_double
-SRCS_STCK	+=	rott_rgt rott_rgt_double rpush_tab swap
+SRCS_STCK	+=	rott_rgt rott_rgt_double rpush_tab swap is_empty empty push_str
 SRCS_STCK	:=	$(addprefix sources/data/stack/stck_, $(SRCS_STCK))
 SRCS_STCK	:=	$(addsuffix .c, $(SRCS_STCK))
 OBJS_STCK	=	$(addprefix $(OBJS_STCK_DIR)/, $(SRCS_STCK:.c=.o))

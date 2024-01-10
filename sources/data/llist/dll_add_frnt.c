@@ -12,12 +12,17 @@
 
 #include "libfpp.h"
 
-int	dll_add_frnt(t_dllist **head, void *value)
+int	dll_add_frnt(t_dllist **head, char *value)
 {
+	if (!head[0])
+	{
+		head[0] = dll_node_new(value);
+		return (TRUE);
+	}
 	head[0]->prev = dll_node_new(value);
 	if (!head[0]->prev)
-		return (0);
+		return (FALSE);
 	head[0]->prev->next = head[0];
 	head[0] = head[0]->prev;
-	return (1);
+	return (TRUE);
 }

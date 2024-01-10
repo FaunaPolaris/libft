@@ -12,18 +12,18 @@
 
 #include "libfpp.h"
 
-t_dllist	*dll_new(void **values)
+t_dllist	*dll_new(char **values)
 {
 	int		i;
 	t_dllist	*head;
 
 	i = 0;
-	if (!values || !values[0] || *(char *)values[0] == '\0')
+	if (!values || !values[0] || *values[0] == '\0')
 		return (NULL);
 	head = (t_dllist *)mem_calloc(1, sizeof(t_dllist));
 	if (!head)
 		return (NULL);
-	head->as_int = conv_atoi((char *)values[0]);
+	head->as_int = conv_atoi(values[0]);
 	while (values[++i])
 	{
 		if (!dll_add_back(head, values[i]))
