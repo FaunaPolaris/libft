@@ -6,6 +6,7 @@ void	stck_pop(t_stack *stack)
 
 	temp = stack->top;
 	stack->top = stack->top->next;
+	free(temp->as_str);
 	free(temp);
 	return ;
 }

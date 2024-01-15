@@ -16,16 +16,14 @@ void	dll_clear(t_dllist **head)
 {
 	t_dllist	*old;
 
-	if (!head[0])
+	if (!*head)
 		return ;
-	while (head[0]->next)
+	while (*head)
 	{
-		old = head[0];
-		head[0] = head[0]->next;
+		old = *head;
+		*head = (*head)->next;
 		free(old->as_str);
 		free(old);
 	}
-	free(head[0]->as_str);
-	free(head[0]);
-	head[0] = NULL;
+	*head = NULL;
 }
