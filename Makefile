@@ -1,11 +1,11 @@
 NAME		=	libfpp.a
-CC		=	gcc
+CC			=	gcc
 C_FLAGS		=	-Wall -Wextra -Werror -g3 -ggdb
-AR		=	ar rcs
-RM		=	rm -rf
+AR			=	ar rcs
+RM			=	rm -rf
 
 RESET		=	\033[0m
-RED		=	\033[0;36m
+RED			=	\033[0;36m
 
 LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H)
 
@@ -19,39 +19,39 @@ all: $(LIBS) $(NAME)
 # types.h
 # ----------
 
-TYPES_H		=	types.a
+TYPES_H			=	types.a
 
 OBJS_STR_DIR	=	objects
-SRCS_STR	=	lcat lcpy len cut comp ncmp is_digit iteri sub
-SRCS_STR	+=	substr padding ndup dup find_str find_char rfind_char
-SRCS_STR	+=	join copy_upto split split_once splitsplit
-SRCS_STR	:=	$(addprefix sources/types/str_,$(SRCS_STR))
-SRCS_STR	:=	$(addsuffix .c,$(SRCS_STR))
-OBJS_STR	=	$(addprefix $(OBJS_STR_DIR)/, $(SRCS_STR:.c=.o))
+SRCS_STR		=	lcat lcpy len cut comp ncmp is_digit iteri sub
+SRCS_STR		+=	substr padding ndup dup find_str find_char rfind_char
+SRCS_STR		+=	join copy_upto split split_once splitsplit
+SRCS_STR		:=	$(addprefix sources/types/str_,$(SRCS_STR))
+SRCS_STR		:=	$(addsuffix .c,$(SRCS_STR))
+OBJS_STR		=	$(addprefix $(OBJS_STR_DIR)/, $(SRCS_STR:.c=.o))
 
 OBJS_CHAR_DIR	=	objects
-SRCS_CHAR	=	count
-SRCS_CHAR	:=	$(addprefix sources/types/char_,$(SRCS_CHAR))
-SRCS_CHAR	:=	$(addsuffix .c,$(SRCS_CHAR))
-OBJS_CHAR	=	$(addprefix $(OBJS_CHAR_DIR)/, $(SRCS_CHAR:.c=.o))
+SRCS_CHAR		=	count
+SRCS_CHAR		:=	$(addprefix sources/types/char_,$(SRCS_CHAR))
+SRCS_CHAR		:=	$(addsuffix .c,$(SRCS_CHAR))
+OBJS_CHAR		=	$(addprefix $(OBJS_CHAR_DIR)/, $(SRCS_CHAR:.c=.o))
 
-OBJS_FD_DIR	=	objects
-SRCS_FD		=	gnl read_all read_upto
-SRCS_FD		:=	$(addprefix sources/types/fd_,$(SRCS_FD))
-SRCS_FD		:=	$(addsuffix .c,$(SRCS_FD))
-OBJS_FD		=	$(addprefix $(OBJS_FD_DIR)/, $(SRCS_FD:.c=.o))
+OBJS_FD_DIR		=	objects
+SRCS_FD			=	gnl read_all read_upto
+SRCS_FD			:=	$(addprefix sources/types/fd_,$(SRCS_FD))
+SRCS_FD			:=	$(addsuffix .c,$(SRCS_FD))
+OBJS_FD			=	$(addprefix $(OBJS_FD_DIR)/, $(SRCS_FD:.c=.o))
 
 OBJS_INT_DIR	=	objects
-SRCS_INT	=	len len_base
-SRCS_INT	:=	$(addprefix sources/types/int_,$(SRCS_INT))
-SRCS_INT	:=	$(addsuffix .c,$(SRCS_INT))
-OBJS_INT	=	$(addprefix $(OBJS_INT_DIR)/, $(SRCS_INT:.c=.o))
+SRCS_INT		=	len len_base
+SRCS_INT		:=	$(addprefix sources/types/int_,$(SRCS_INT))
+SRCS_INT		:=	$(addsuffix .c,$(SRCS_INT))
+OBJS_INT		=	$(addprefix $(OBJS_INT_DIR)/, $(SRCS_INT:.c=.o))
 
 OBJS_VOID_DIR	=	objects
-SRCS_VOID	=	plen
-SRCS_VOID	:=	$(addprefix sources/types/void_,$(SRCS_VOID))
-SRCS_VOID	:=	$(addsuffix .c,$(SRCS_VOID))
-OBJS_VOID	=	$(addprefix $(OBJS_VOID_DIR)/, $(SRCS_VOID:.c=.o))
+SRCS_VOID		=	plen
+SRCS_VOID		:=	$(addprefix sources/types/void_,$(SRCS_VOID))
+SRCS_VOID		:=	$(addsuffix .c,$(SRCS_VOID))
+OBJS_VOID		=	$(addprefix $(OBJS_VOID_DIR)/, $(SRCS_VOID:.c=.o))
 
 $(OBJS_VOID_DIR)/%.o: %.c
 	@mkdir -p $(@D)
@@ -139,6 +139,19 @@ SRCS_MTH	:=	$(addprefix sources/maths/mth_, $(SRCS_MTH))
 SRCS_MTH	:=	$(addsuffix .c, $(SRCS_MTH))
 OBJS_MTH	=	$(addprefix $(OBJS_MTH_DIR)/, $(SRCS_MTH:.c=.o))
 
+OBJS_MTX_DIR	=	objects
+SRCS_MTX		=	apply fill from_vec identity init multiply new null
+SRCS_MTX		+=	nullv print rotate
+SRCS_MTX		:=	$(addprefix sources/maths/mtx_, $(SRCS_MTX))
+SRCS_MTX		:=	$(addsuffix .c, $(SRCS_MTX))
+OBJS_MTX		=	$(addprefix $(OBJS_MTX_DIR)/, $(SRCS_MTX:.c=.o))
+
+OBJS_VEC_DIR	=	objects
+SRCS_VEC		=	center from_mtx isometry new unit
+SRCS_VEC		:=	$(addprefix sources/maths/vec_, $(SRCS_VEC))
+SRCS_VEC		:=	$(addsuffix .c, $(SRCS_VEC))
+OBJS_VEC		=	$(addprefix $(OBJS_VEC_DIR)/, $(SRCS_VEC:.c=.o))
+
 $(OBJS_MTH_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
@@ -168,32 +181,60 @@ $(MEMORY_H): $(OBJS_MEM)
 	@$(AR) $(NAME) $^
 
 # ----------
+#  graphics.h
+# ----------
+
+GRAPH_H			=	graphics.a
+
+OBJS_DRAW_DIR	=	objects
+SRCS_DRAW		=	butterfly circle cube fill line pixel plane point
+SRCS_DRAW		+=	square update
+SRCS_DRAW		:=	$(addprefix sources/graphics/draw_, $(SRCS_DRAW))
+SRCS_DRAW		:=	$(addsuffix .c, $(SRCS_DRAW))
+OBJS_DRAW		=	$(addprefix $(OBJS_DRAW_DIR)/, $(SRCS_DRAW:.c=.o))
+
+OBJS_GRAPH_DIR	=	objects
+SRCS_GRAPH		=	perlin_nowl win_new
+SRCS_GRAPH		=	$(addprefix sources/grpahics/, $(SRCS_GRAPH))
+SRCS_GRAPH		=	$(addsuffix .c, $(SRCS_GRAPH))
+OBJS_GRAPH		=	$(addprefix $(OBJS_GRAPH_DIR)/, $(SRCS_DRAW:.c=.o))
+
+
+$(OBJS_DRAW_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(OBJS_GRAPH_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+# ----------
 #  data.h
 # ----------
 
-DATA_H		=	data.a
+DATA_H			=	data.a
 
 OBJS_GRID_DIR	=	objects
-SRCS_GRID	=	free new countd counts fillbrdr fill iter len newsqr add_element
-SRCS_GRID	:=	$(addprefix sources/data/grid_, $(SRCS_GRID))
-SRCS_GRID	:=	$(addsuffix .c, $(SRCS_GRID))
-OBJS_GRID	=	$(addprefix $(OBJS_GRID_DIR)/, $(SRCS_GRID:.c=.o))
+SRCS_GRID		=	free new countd counts fillbrdr fill iter len newsqr add_element
+SRCS_GRID		:=	$(addprefix sources/data/grid_, $(SRCS_GRID))
+SRCS_GRID		:=	$(addsuffix .c, $(SRCS_GRID))
+OBJS_GRID		=	$(addprefix $(OBJS_GRID_DIR)/, $(SRCS_GRID:.c=.o))
 
 OBJS_FRM_DIR	=	objects
-SRCS_FRM	=	new
-SRCS_FRM	:=	$(addprefix sources/data/frm_, $(SRCS_FRM))
-SRCS_FRM	:=	$(addsuffix .c, $(SRCS_FRM))
-OBJS_FRM	=	$(addprefix $(OBJS_FRM_DIR)/, $(SRCS_FRM:.c=.o))
+SRCS_FRM		=	new
+SRCS_FRM		:=	$(addprefix sources/data/frm_, $(SRCS_FRM))
+SRCS_FRM		:=	$(addsuffix .c, $(SRCS_FRM))
+OBJS_FRM		=	$(addprefix $(OBJS_FRM_DIR)/, $(SRCS_FRM:.c=.o))
 
 OBJS_DLL_DIR	=	objects
-SRCS_DLL	=	add_back add_frnt clear closest closest_hgher dindex
-SRCS_DLL	+=	di_haslower di_lowerb di_lowerf di_value di_lower
-SRCS_DLL	+=	find_end has has_dupls has_hgher has_lower highest index
-SRCS_DLL	+=	is_crescent lindex2 lindex3 lowest mediam new new_node
-SRCS_DLL	+=	next_hgher next_lower pointer rindex rlindex2 rlindex3 size
-SRCS_DLL	:=	$(addprefix sources/data/llist/dll_, $(SRCS_DLL))
-SRCS_DLL	:=	$(addsuffix .c, $(SRCS_DLL))
-OBJS_DLL	=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
+SRCS_DLL		=	add_back add_frnt clear closest closest_hgher dindex
+SRCS_DLL		+=	di_haslower di_lowerb di_lowerf di_value di_lower
+SRCS_DLL		+=	find_end has has_dupls has_hgher has_lower highest index
+SRCS_DLL		+=	is_crescent lindex2 lindex3 lowest mediam new new_node
+SRCS_DLL		+=	next_hgher next_lower pointer rindex rlindex2 rlindex3 size
+SRCS_DLL		:=	$(addprefix sources/data/llist/dll_, $(SRCS_DLL))
+SRCS_DLL		:=	$(addsuffix .c, $(SRCS_DLL))
+OBJS_DLL		=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
 
 $(OBJS_DLL_DIR)/%.o:%.c
 	@mkdir -p $(@D)

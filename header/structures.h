@@ -1,6 +1,39 @@
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
+//	math
+
+typedef struct s_constants
+{
+	double	cos_p45;
+	double	sin_n30;
+	double	convert_to_radian;
+	int		chance;
+}	t_constants;
+
+typedef struct s_vector
+{
+	double	y;
+	double	x;
+	double	z;
+	int		color;
+}	t_vector;
+
+typedef struct s_ivector
+{
+	int		y;
+	int		x;
+	int		z;
+}	t_ivector;
+
+typedef struct s_matrix
+{
+	int		col;
+	int		row;
+	int		size;
+	double **elem;
+}	t_matrix;
+
 // printf
 
 typedef struct s_printf
@@ -39,5 +72,21 @@ typedef struct s_wireframe
 	int	height;
 	int	color;
 }	t_wireframe;
+
+//	graphics;
+
+typedef struct s_window
+{
+	void	*window;
+	void	*img;
+	char	*addr;
+	char	*name;
+	int		width;
+	int		height;
+	int		bits;
+	int		line;
+	int		endian;
+	int		exists;
+}	t_window;
 
 #endif
