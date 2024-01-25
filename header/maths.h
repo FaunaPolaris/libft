@@ -32,7 +32,7 @@ int			mtx_fill(t_matrix *m, char *content);
 
 void		mtx_print(t_matrix m);
 
-t_vector	mtx_apply(const t_vector vector const t_matrix m);
+t_vector	mtx_apply(const t_vector vector, const t_matrix m);
 
 // vector manipulation
 

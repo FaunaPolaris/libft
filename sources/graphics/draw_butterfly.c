@@ -1,5 +1,4 @@
 #include "libfpp.h"
-#include "formulas.h"
 
 void	draw_butterfly(t_window *win, t_vector center)
 {
