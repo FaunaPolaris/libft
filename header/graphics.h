@@ -20,7 +20,7 @@ void	draw_cube(t_window *win, t_vector *stt, t_vector end,
 				t_vector (*pers) (const t_vector));
 void	draw_plane(t_window *win, t_vector stt, t_vector end,
 				t_vector (*projct) (const t_vector));
-// formula drawing
+// 		formula drawing
 void	draw_butterfly(t_window *win, t_vector center);
 void	draw_circle(t_window *win, t_vector center, int radius, int color);
 //advanced graphical concepts

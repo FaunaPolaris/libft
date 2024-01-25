@@ -26,9 +26,9 @@ void	draw_line(t_window *win, t_vector point_a, t_vector point_b)
 	while (++i < hypo)
 	{
 		t = (double)i / hypo;
-		x = fp_ilerp(point_a.x, point_b.x, t);
-		y = fp_ilerp(point_a.y, point_b.y, t);
-		t = fp_lerpcolor(point_a.color, point_b.color, t);
+		x = mth_ilerp(point_a.x, point_b.x, t);
+		y = mth_ilerp(point_a.y, point_b.y, t);
+		t = mth_lerpcolor(point_a.color, point_b.color, t);
 		draw_pixel(win, x, y, t);
 	}
 }

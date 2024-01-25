@@ -17,13 +17,13 @@ void	draw_butterfly(t_window *win, t_vector center)
 		{
 			draw_pixel(win, BUTTERFLY_X(i) + center.x,
 				BUTTERFLY_Y(i) + center.y,
-				fp_lerpcolor(RED, BLUE, j));
+				mth_lerpcolor(RED, BLUE, j));
 		}
 		else
 		{
 			draw_pixel(win, BUTTERFLY_X(i) + center.x,
 				BUTTERFLY_Y(i) + center.y,
-				fp_lerpcolor(RED, BLUE, j));
+				mth_lerpcolor(RED, BLUE, j));
 		}
 		draw_update(win);
 		usleep(1000 * 5);
