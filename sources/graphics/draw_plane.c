@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_plane(t_window *win, t_vector stt, t_vector end,
 		t_vector (*prjct) (const t_vector))

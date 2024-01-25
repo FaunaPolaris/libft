@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_square(t_window *win, t_vector topl, t_vector botr, int fill)
 {

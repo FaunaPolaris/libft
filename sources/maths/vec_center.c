@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "libfpp.h"
 
 t_vector	vec_center(void)
 {

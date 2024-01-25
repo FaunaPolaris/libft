@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_update(t_window *win)
 {

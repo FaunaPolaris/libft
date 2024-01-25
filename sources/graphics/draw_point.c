@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_point(t_window *win, t_vector vertice, int color)
 {

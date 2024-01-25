@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 static void	st_connect(t_window *win, t_vector stt, t_vector end,
 			t_vector (*pers) (const t_vector));

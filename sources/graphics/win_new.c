@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 t_window	*win_open(char *title, int width, int height)
 {

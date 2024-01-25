@@ -1,4 +1,4 @@
-#include "libgraph.h"
+#include "libfpp.h"
 
 static t_matrix	st_rotx(double radian);
 static t_matrix	st_roty(double radian);

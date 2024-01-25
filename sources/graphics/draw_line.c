@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_line(t_window *win, t_vector point_a, t_vector point_b)
 {

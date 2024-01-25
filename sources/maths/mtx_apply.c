@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "libfpp.h"
 
 t_vector	mtx_apply(const t_vector vector, const t_matrix m)
 {

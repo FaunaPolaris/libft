@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "libfpp.h"
 
 void	draw_pixel(t_window *win, int x, int y, int color)
 {

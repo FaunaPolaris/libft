@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "libgraph.h"
+#include "libfpp.h"
 
 static int SEED = 0;
 
