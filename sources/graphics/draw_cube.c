@@ -4,7 +4,7 @@ static void	st_connect(t_window *win, t_vector stt, t_vector end,
 			t_vector (*pers) (const t_vector));
 
 void	draw_cube(t_window *win, t_vector stt, t_vector end,
-		t_vector (*pers) (const t_vector))
+			t_vector (*pers) (const t_vector))
 {
 	int	depth;
 
