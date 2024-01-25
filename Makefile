@@ -7,7 +7,7 @@ RM			=	rm -rf
 RESET		=	\033[0m
 RED			=	\033[0;36m
 
-LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H)
+LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H) $(GRAPHICS_H)
 
 INCLUDE		=	-I ./header/
 
@@ -156,7 +156,7 @@ $(OBJS_MTH_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
-$(MATHS_H): $(OBJS_MTH)
+$(MATHS_H): $(OBJS_MTH) $(OBJS_MTX) $(OBJS_VEC)
 	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 
@@ -207,6 +207,10 @@ $(OBJS_DRAW_DIR)/%.o:%.c
 $(OBJS_GRAPH_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
+$(GRAPH_H): $(OBJS_GRAPH)
+	@printf "archiving: $(RED)%30s$(RESET)\n" $^
+	@$(AR) $(NAME) $^
 
 # ----------
 #  data.h
