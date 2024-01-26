@@ -24,6 +24,7 @@ void	draw_plane(t_window *win, t_vector stt, t_vector end,
 void	draw_butterfly(t_window *win, t_vector center);
 void	draw_circle(t_window *win, t_vector center, int radius, int color);
 int		draw_parabola(t_window *win, t_vector stt, int lenght);
+int		draw_mth(t_window *win, t_vector sttm, int(*mth)(int));
 //advanced graphical concepts
 float 	perlin_nowl(float x, float y, float freq, int depth);
 

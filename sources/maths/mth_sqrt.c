@@ -15,5 +15,5 @@ int	mth_sqrt(int n)
 			break ;
 		output++;
 	}
-	return (FALSE);
+	return (output);
 }

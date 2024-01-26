@@ -138,7 +138,7 @@ $(CONVERT_H): $(OBJS_CONV)
 MATHS_H		=	maths.a
 
 OBJS_MTH_DIR	=	objects
-SRCS_MTH	=	abs lerp pow sqrt
+SRCS_MTH	=	abs lerp pow sqrt pow2
 SRCS_MTH	:=	$(addprefix sources/maths/mth_, $(SRCS_MTH))
 SRCS_MTH	:=	$(addsuffix .c, $(SRCS_MTH))
 OBJS_MTH	=	$(addprefix $(OBJS_MTH_DIR)/, $(SRCS_MTH:.c=.o))
@@ -192,7 +192,7 @@ GRAPH_H			=	graphics.a
 
 OBJS_DRAW_DIR	=	objects
 SRCS_DRAW		=	butterfly circle cube fill line pixel plane point
-SRCS_DRAW		+=	square update parabola
+SRCS_DRAW		+=	square update parabola mth
 SRCS_DRAW		:=	$(addprefix sources/graphics/draw_, $(SRCS_DRAW))
 SRCS_DRAW		:=	$(addsuffix .c, $(SRCS_DRAW))
 OBJS_DRAW		=	$(addprefix $(OBJS_DRAW_DIR)/, $(SRCS_DRAW:.c=.o))
