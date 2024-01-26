@@ -4,7 +4,7 @@ t_window	*win_open(char *title, int width, int height)
 {
 	t_window	*win;
 
-	win = (t_window *)fp_calloc(1, sizeof(t_window));
+	win = (t_window *)mem_calloc(1, sizeof(t_window));
 	if (!win)
 		return (NULL);
 	win->window = mlx_new_window(g_mlx, width, height, title);
@@ -23,10 +23,10 @@ t_window	*win_open(char *title, int width, int height)
 
 int	win_close_sequence(int keycode, void *window)
 {
-	fp_printf("key pressed\n");
+	printf("key pressed\n");
 	if (keycode == KEY_ESC)
 	{
-		fp_printf("exit(1): esc key pressed\n");
+		printf("exit(1): esc key pressed\n");
 		win_close(g_mlx, window);
 	}
 	return (1);
@@ -37,7 +37,7 @@ int	win_close(void *mlx, void *window)
 	t_window	*win;
 
 	win = (t_window *)window;
-	fp_printf("closing %s\n", win->name);
+	printf("closing %s\n", win->name);
 	mlx_destroy_image(mlx, win->img);
 	mlx_destroy_window(mlx, win->window);
 	win->exists = 0;

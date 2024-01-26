@@ -9,8 +9,8 @@ int	mtx_fill(t_matrix *m, char *content)
 	int		y;
 	char	**split;
 
-	split = fp_split(content, ' ');
-	if (fp_grdlen(split) != m->size)
+	split = str_split(content, ' ');
+	if (grid_len(split) != m->size)
 		return (st_free(split));
 	i = -1;
 	while (++i < m->size)
@@ -18,9 +18,9 @@ int	mtx_fill(t_matrix *m, char *content)
 		x = i / m->col;
 		y = i % m->col;
 		if (m->col == m->row)
-			m->elem[x][y] = fp_atoi(split[i]);
+			m->elem[x][y] = conv_atoi(split[i]);
 		else
-			m->elem[y][x] = fp_atoi(split[i]);
+			m->elem[y][x] = conv_atoi(split[i]);
 	}
 	st_free(split);
 	return (0);

@@ -20,10 +20,16 @@ t_vector	vec_unit(char base)
 	output.y = 0;
 	output.z = 0;
 	if (base == 'x')
+	{
 		output.x = 1;
-	else if (base == 'y');
+	}
+	else if (base == 'y')
+	{
 		output.y = 1;
+	}
 	else if (base == 'z')
+	{
 		output.z = 1;
+	}
 	return (output);
 }

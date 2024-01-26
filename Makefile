@@ -4,14 +4,18 @@ C_FLAGS		=	-Wall -Wextra -Werror -g3 -ggdb
 AR			=	ar rcs
 RM			=	rm -rf
 
+MLX_LINK	=	-L./minilibx/ -lmlx -lX11 -lXext -I./minilibx/
+MATH_LINK	=	-lm
+
 RESET		=	\033[0m
 RED			=	\033[0;36m
 
-LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H) $(GRAPHICS_H)
+LIBS		=	$(TYPES_H) $(CONVERT_H) $(CHECK_H) $(MATHS_H) $(DATA_H) $(MEMORY_H) $(PRINTING_H) $(PRINTF_H) $(STACK_H) $(GRAPH_H)
 
 INCLUDE		=	-I ./header/
 
-all: $(LIBS) $(NAME)
+all: $(NAME)
+
 
 # sources:
  
@@ -188,29 +192,35 @@ GRAPH_H			=	graphics.a
 
 OBJS_DRAW_DIR	=	objects
 SRCS_DRAW		=	butterfly circle cube fill line pixel plane point
-SRCS_DRAW		+=	square update
+SRCS_DRAW		+=	square update parabola
 SRCS_DRAW		:=	$(addprefix sources/graphics/draw_, $(SRCS_DRAW))
 SRCS_DRAW		:=	$(addsuffix .c, $(SRCS_DRAW))
 OBJS_DRAW		=	$(addprefix $(OBJS_DRAW_DIR)/, $(SRCS_DRAW:.c=.o))
 
 OBJS_GRAPH_DIR	=	objects
 SRCS_GRAPH		=	perlin_nowl win_new
-SRCS_GRAPH		=	$(addprefix sources/grpahics/, $(SRCS_GRAPH))
-SRCS_GRAPH		=	$(addsuffix .c, $(SRCS_GRAPH))
-OBJS_GRAPH		=	$(addprefix $(OBJS_GRAPH_DIR)/, $(SRCS_DRAW:.c=.o))
+SRCS_GRAPH		:=	$(addprefix sources/graphics/, $(SRCS_GRAPH))
+SRCS_GRAPH		:=	$(addsuffix .c, $(SRCS_GRAPH))
+OBJS_GRAPH		=	$(addprefix $(OBJS_GRAPH_DIR)/, $(SRCS_GRAPH:.c=.o))
 
 
 $(OBJS_DRAW_DIR)/%.o:%.c
 	@mkdir -p $(@D)
-	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE) -lm $(MLX_LINK)
 
 $(OBJS_GRAPH_DIR)/%.o:%.c
 	@mkdir -p $(@D)
-	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE) -lm $(MLX_LINK)
 
-$(GRAPH_H): $(OBJS_GRAPH)
+$(GRAPH_H): $(OBJS_GRAPH) $(OBJS_DRAW)
 	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
+
+graphics_test:
+	@make memory.a
+	@make maths.a
+	@make graphics.a
+	$(CC) $(C_FLAGS) -o $@ $(MLX_LINK) -L./ -lfpp tests/graph_test.c $(INCLUDE)
 
 # ----------
 #  data.h
@@ -242,11 +252,11 @@ OBJS_DLL		=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
 
 $(OBJS_DLL_DIR)/%.o:%.c
 	@mkdir -p $(@D)
-	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+	$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(OBJS_GRID_DIR)/%.o:%.c
 	@mkdir -p $(@D)
-	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+	$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(OBJS_FRM_DIR)/%.o:%.c
 	@mkdir -p $(@D)

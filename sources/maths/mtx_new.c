@@ -9,9 +9,9 @@ t_matrix	mtx_new(int col, int row)
 		return (mtx_null());
 	output.size = col * row;
 	i = -1;
-	output.elem = (double **)fp_calloc(col, sizeof(double *));
+	output.elem = (double **)mem_calloc(col, sizeof(double *));
 	while (++i < col)
-		output.elem[i] = (double *)fp_calloc(row, sizeof(double));
+		output.elem[i] = (double *)mem_calloc(row, sizeof(double));
 	output.col = col;
 	output.row = row;
 	return (output);

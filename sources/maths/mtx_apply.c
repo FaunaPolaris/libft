@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_applymatrix3d.c                                 :+:      :+:    :+:   */
+/*   fp_applym3d.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,15 +15,18 @@
 t_vector	mtx_apply(const t_vector vector, const t_matrix m)
 {
 	t_vector	output;
+	int			x;
+	int			y;
+	int			z;
 
 	x = vector.x;
 	y = vector.y;
 	z = vector.z;
-	output.x = (x * (*matrix)[0][0]) + (y * (*matrix)[0][1]) +
-				(z * (*matrix)[0][2]);
-	output.y = (x * (*matrix)[1][0]) + (y * (*matrix)[1][1]) +
-				(z * (*matrix)[1][2]);
-	output.z = (x * (*matrix)[2][0]) + (y * (*matrix)[2][1]) +
-				(z * (*matrix)[2][2]);
+	output.x = (x * (m.elem)[0][0]) + (y * (m.elem)[0][1]) +
+				(z * (m.elem)[0][2]);
+	output.y = (x * (m.elem)[1][0]) + (y * (m.elem)[1][1]) +
+				(z * (m.elem)[1][2]);
+	output.z = (x * (m.elem)[2][0]) + (y * (m.elem)[2][1]) +
+				(z * (m.elem)[2][2]);
 	return (output);
 }
