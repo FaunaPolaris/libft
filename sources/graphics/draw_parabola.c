@@ -9,7 +9,7 @@ int	draw_parabola(t_window *win, t_vector stt, int lenght)
 	while (t < lenght)
 	{
 			x = (stt.x + t);
-			y = (pow(stt.y + t, 2)) * .1;
+			y = (pow(stt.y + t, 2)) * .01;
 			draw_pixel(win, x, y, WHITE);
 			t += PRECISION;
 	}
