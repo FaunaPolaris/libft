@@ -12,18 +12,19 @@
 
 #include "libfpp.h"
 
-void	draw_pixel(t_window *win, int x, int y, int color)
+int	draw_pixel(t_window *win, int x, int y, int color)
 {
 	char	*position;
 
 	if (!win->exists)
-		return ;
+		return (FALSE);
 	if (x > win->width - 1 || y > win->height - 1 || x < 0 || y < 0)
-		return ;
+		return (FALSE);
 	y = -y + win->height;
 	position = win->addr + (y * win->line
 			+ (x * win->bits / 8));
 	*(unsigned int *)position  = color;
+	return (TRUE);
 }
 
 void	drac_pixel(t_window *win, int x, int y, int color)

@@ -16,6 +16,7 @@
 
 # include "definitions.h"
 # include "structures.h"
+# include "enumerators.h"
 # include "externs.h"
 
 // custon libraries
