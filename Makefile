@@ -16,7 +16,6 @@ INCLUDE		=	-I ./header/
 
 all: $(NAME)
 
-
 # sources:
  
 # ----------
@@ -192,13 +191,13 @@ GRAPH_H			=	graphics.a
 
 OBJS_DRAW_DIR	=	objects
 SRCS_DRAW		=	butterfly circle cube fill line pixel plane point
-SRCS_DRAW		+=	square update parabola mth
+SRCS_DRAW		+=	square update parabola mth cartesian_table
 SRCS_DRAW		:=	$(addprefix sources/graphics/draw_, $(SRCS_DRAW))
 SRCS_DRAW		:=	$(addsuffix .c, $(SRCS_DRAW))
 OBJS_DRAW		=	$(addprefix $(OBJS_DRAW_DIR)/, $(SRCS_DRAW:.c=.o))
 
 OBJS_GRAPH_DIR	=	objects
-SRCS_GRAPH		=	perlin_nowl win_new
+SRCS_GRAPH		=	perlin_nowl win_new win_cartesian_table
 SRCS_GRAPH		:=	$(addprefix sources/graphics/, $(SRCS_GRAPH))
 SRCS_GRAPH		:=	$(addsuffix .c, $(SRCS_GRAPH))
 OBJS_GRAPH		=	$(addprefix $(OBJS_GRAPH_DIR)/, $(SRCS_GRAPH:.c=.o))
