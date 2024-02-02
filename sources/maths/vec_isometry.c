@@ -19,5 +19,7 @@ t_vector	vec_isometry(const t_vector vertx)
 	output.x = (vertx.x - vertx.y) * g_mtx->cos_p45;
 	output.y = (-vertx.z + vertx.x + vertx.y)
 			* g_mtx->sin_n30;
+	output.z = vertx.z;
+	output.color = vertx.color;
 	return (output);
 }

@@ -191,7 +191,7 @@ GRAPH_H			=	graphics.a
 
 OBJS_DRAW_DIR	=	objects
 SRCS_DRAW		=	butterfly circle cube fill line line90d pixel plane point
-SRCS_DRAW		+=	square update parabola mth cartesian_table
+SRCS_DRAW		+=	square update parabola mth cartesian_table helix
 SRCS_DRAW		:=	$(addprefix sources/graphics/draw_, $(SRCS_DRAW))
 SRCS_DRAW		:=	$(addsuffix .c, $(SRCS_DRAW))
 OBJS_DRAW		=	$(addprefix $(OBJS_DRAW_DIR)/, $(SRCS_DRAW:.c=.o))
