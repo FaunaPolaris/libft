@@ -249,6 +249,16 @@ SRCS_DLL		:=	$(addprefix sources/data/llist/dll_, $(SRCS_DLL))
 SRCS_DLL		:=	$(addsuffix .c, $(SRCS_DLL))
 OBJS_DLL		=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
 
+OBJS_LL_DIR	=	objects
+SRCS_LL		=	new node del_one add_back clear
+SRCS_LL		:=	$(addprefix sources/data/llist/ll_, $(SRCS_LL))
+SRCS_LL		:=	$(addsuffix .c, $(SRCS_LL))
+OBJS_LL		=	$(addprefix $(OBJS_LL_DIR)/, $(SRCS_LL:.c=.o))
+
+$(OBJS_LL_DIR)/%.o:%.c
+	@mkdir -p $(@D)
+	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
+
 $(OBJS_DLL_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
@@ -261,7 +271,7 @@ $(OBJS_FRM_DIR)/%.o:%.c
 	@mkdir -p $(@D)
 	@$(CC) $(C_FLAGS) -c $^ -o $@ $(INCLUDE)
 
-$(DATA_H): $(OBJS_GRID) $(OBJS_FRM) $(OBJS_DLL)
+$(DATA_H): $(OBJS_GRID) $(OBJS_FRM) $(OBJS_DLL) $(OBJS_LL)
 	@printf "archiving: $(RED)%30s$(RESET)\n" $^
 	@$(AR) $(NAME) $^
 

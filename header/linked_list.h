@@ -1,6 +1,14 @@
 #ifndef LINKED_LIST_H
 # define LINKED_LIST_H
 
+// linked list:
+
+t_llist		*ll_new(char **variable);
+t_llist		*ll_node(char *value);
+void		ll_add_back(t_llist **llst, t_llist *new);
+void		ll_del_one(t_llist *llist);
+void		ll_clear(t_llist **llst);
+
 // doubly linked list:
 
 //	 creation and deletion:

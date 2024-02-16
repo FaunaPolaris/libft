@@ -43,6 +43,13 @@ typedef struct s_printf
 }	t_printf;
 
 // data
+//		linked list
+typedef struct s_llist
+{
+	char		*value;
+	struct s_llist	*next;
+}	t_llist;
+
 //		doubly linked list
 typedef struct s_dllist
 {
