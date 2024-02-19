@@ -24,6 +24,7 @@ size_t	str_len(const char *s);
 int	str_cut(char *str, int from, int size);
 int	str_comp(char *str1, char *str2);
 int	str_ncmp(const char *str1, const char *str2, size_t n);
+int	str_comp_upto(char *str1, char *str2, char end);
 int	str_is_digit(char *str);
 void	str_iteri(char *s, void (*f) (int, char *));
 void	str_sub(char *line, int old, int sub);

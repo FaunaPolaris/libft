@@ -27,7 +27,7 @@ TYPES_H			=	types.a
 OBJS_STR_DIR	=	objects
 SRCS_STR		=	lcat lcpy len cut comp ncmp is_digit iteri sub
 SRCS_STR		+=	substr padding ndup dup find_str find_char rfind_char
-SRCS_STR		+=	join copy_upto split split_once splitsplit
+SRCS_STR		+=	join copy_upto split split_once splitsplit comp_upto
 SRCS_STR		:=	$(addprefix sources/types/str_,$(SRCS_STR))
 SRCS_STR		:=	$(addsuffix .c,$(SRCS_STR))
 OBJS_STR		=	$(addprefix $(OBJS_STR_DIR)/, $(SRCS_STR:.c=.o))
@@ -250,7 +250,8 @@ SRCS_DLL		:=	$(addsuffix .c, $(SRCS_DLL))
 OBJS_DLL		=	$(addprefix $(OBJS_DLL_DIR)/, $(SRCS_DLL:.c=.o))
 
 OBJS_LL_DIR	=	objects
-SRCS_LL		=	new node del_one add_back clear
+SRCS_LL		=	new node del_one add_back clear len to_tab remove_node add_back_tab
+SRCS_LL		+=	get_node change_node
 SRCS_LL		:=	$(addprefix sources/data/llist/ll_, $(SRCS_LL))
 SRCS_LL		:=	$(addsuffix .c, $(SRCS_LL))
 OBJS_LL		=	$(addprefix $(OBJS_LL_DIR)/, $(SRCS_LL:.c=.o))
