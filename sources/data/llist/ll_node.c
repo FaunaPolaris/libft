@@ -4,6 +4,8 @@ t_llist	*ll_node(char *value)
 {
 	t_llist *new;
 
+	if (!value)
+		return (NULL);
 	new = (t_llist *)mem_calloc(1, sizeof(t_llist));
 	if (!new)
 		return (NULL);

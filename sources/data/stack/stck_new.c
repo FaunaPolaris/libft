@@ -32,6 +32,9 @@ t_stack	*stck_new(char **values, char id)
 
 void	stck_rmv(t_stack *stack)
 {
+	if (!stack)
+		return ;
 	dll_clear(&stack->top);
 	free(stack);
+	stack = NULL;
 }

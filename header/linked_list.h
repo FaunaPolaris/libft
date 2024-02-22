@@ -6,7 +6,7 @@
 t_llist		*ll_new(char **variable);
 t_llist		*ll_node(char *value);
 t_llist		*ll_get_node(t_llist **head, char *value);
-void		ll_add_back(t_llist **llst, t_llist *new);
+int			ll_add_back(t_llist **llst, t_llist *new);
 void		ll_add_back_tab(t_llist **head, char **values);
 void		ll_del_one(t_llist *llist);
 void		ll_change_node(t_llist *node, char *new_value);

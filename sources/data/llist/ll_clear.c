@@ -13,5 +13,4 @@ void	ll_clear(t_llist **llst)
 		free(aux);
 		aux = temp;
 	}
-	// free(llst);
 }
