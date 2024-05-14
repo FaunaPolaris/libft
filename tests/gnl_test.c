@@ -9,14 +9,9 @@ int	main(int argc, char **argv)
 		return (0);
 	printf("opening file %s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
-	while (1)
-	{
-		line = fd_gnl(fd);
-		if (!line)
-			break ;
-		printf("%s\n", line);
-		free(line);
-	}
+	line = fd_read_all(fd);
+	printf("%s", line);
+	free(line);
 	close(fd);
 	return (0);
 }
