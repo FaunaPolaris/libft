@@ -5,7 +5,7 @@ static int	st_check(const char *str, int frst);
 
 char	***str_splitsplit(const char *str, int frst, int scnd)
 {
-	char	***output;
+	char		***output;
 	char		**temp;
 	int			height;
 	int			i;
@@ -13,14 +13,14 @@ char	***str_splitsplit(const char *str, int frst, int scnd)
 	if (!str)
 		return (NULL);
 	height = st_check(str, frst);
-	output = (char ***)mem_calloc(height + 1, sizeof(char**));
+	output = (char ***)mem_calloc(height, sizeof(char**));
 	if (!output)
 		return (NULL);
 	temp = str_split(str, frst);
 	if (!temp)
 		return (st_free(output, temp));
 	i = -1;
-	while (++i < height)
+	while (++i < height - 1)
 	{
 		output[i] = str_split(temp[i], scnd);
 		if (!output[i])
