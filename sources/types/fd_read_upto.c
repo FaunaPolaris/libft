@@ -4,19 +4,26 @@ static char	*st_error(char *output);
 
 char	*fd_read_upto(int fd, int c)
 {
-	char	buffer[BUFFER_SIZE];
+	char	*buffer;
 	char	*output;
 	int	bytes_read;
 
 	output = str_dup("");
-	while (!str_find_char(output, (char)c, 0))
+	buffer = (char *)mem_calloc(BUFFER_SIZE, sizeof(char));
+	while (!char_count(output, (char)c))
 	{
-		bytes_read = read(BUFFER_SIZE, buffer, fd);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == 0)
+		{
+			free(buffer);
 			break ;
+		}
 		if (bytes_read == -1)
+		{
+			free(buffer);
 			return (st_error(output));
-		output = str_join(output, buffer, 1);
+		}
+		output = str_join(output, buffer, 2);
 	}
 	return (output);
 }

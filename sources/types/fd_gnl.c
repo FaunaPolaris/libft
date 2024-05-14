@@ -25,5 +25,11 @@ char	*fd_gnl(int fd)
 	current = hold[0];
 	memory = hold[1];
 	free(hold);
+	if (!memory[0] && !current[0])
+	{
+		free(current);
+		free(memory);
+		return (NULL);
+	}
 	return (current);
 }

@@ -9,7 +9,7 @@ char	*str_find_char(const char *s, int c, int jump)
 	len = str_len(s);
 	while (s[++i] && s[i] != (char)c)
 		;
-	if (s[i] && s[i] == (char)c && jump < i - (int)len)
+	if (s[i] && s[i] == (char)c && jump < (int)len - i)
 		return ((char *)&s[i + jump]);
 	return ((char *)&s[i]);
 }
